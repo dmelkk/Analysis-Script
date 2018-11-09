@@ -38,6 +38,57 @@
 
 \subsection{Der Absolutbetrag auf den reellen Zahlen}
 
+\begin{definition}{(Der Absolutbetrag)}
+	Der \textbf{Absolutbetrag} ist die Funktion
+	\[|\cdot| : \mathbb{R} \to \mathbb{R}, x \to |x| = 
+		\begin{cases}
+			x, &\text{falls } x \geq 0\\
+			-x, &\text{falls } x < 0
+		\end{cases}
+	\]
+	Wir betrachten zuerst einige Konsequenzen dieser Definition.
+\end{definition}
 
-% ---------- End of the section "Intervalle und der Absolutbetrag" -----------
+\begin{corollary}
+	Für $x \in \mathbb{R}$ ist $|x| \geq 0$ und $|x| = 0$ genau dann, wenn $x = 0$. Dies folgt aus der Trichotomie von reellen Zahlen: Für $x = 0$ gilt $|x| = 0$, für $x > 0$ gilt $|x| = x > 0$ und für $x < 0$ folgt $|x| = -x > 0$.
+\end{corollary}
+
+\begin{corollary}
+	Es ist $|x| = |-x|$ für alle $x \in \mathbb{R}$
+\end{corollary}
+
+\begin{corollary}\label{cor:mult}
+	Die Absolutbetrag ist multiplikativ: $\forall x, y \in \mathbb{R}: |xy| = |x||y|$
+\end{corollary}
+
+\begin{corollary}
+	$\forall x \in \mathbb{R}^{\times} = \mathbb{R} \setminus \{0\}: |\frac{1}{x}| = \frac{1}{|x|}$. Deis folgt aus \ref{cor:mult} wegen $\forall x \in \mathbb{R} \setminus\{0\}: |\frac{1}{x}||x| = 1$ 
+\end{corollary}
+
+\begin{corollary}
+	$\forall x, y \in \mathbb{R}: |x| \leq y \iff -y \leq x \leq y$. Denn angenommen $|x| \leq y$. Falls $x \geq 0$ dann gilt $-y \leq 0 \leq x = |x| \leq y$. Falls $x < 0$, dann ist $-y \leq -|x| = x < 0 \leq y$ und damit wiederum $-y \leq x \leq y$. Für die Umkehrung bemerken wir, dass $-y \leq x \leq y$ auch $-y \leq -x \leq y$ und somit in jedem Fall $|x| \leq y$ impliziert.
+\end{corollary}
+
+\begin{corollary}
+	Ananlog ist $\forall x, y \in \mathbb{R}: |x| < y \iff -y < x < y$
+\end{corollary}
+
+\begin{corollary}{(Dreiecksungleichung)}
+	\[\forall x, y \in \mathbb{R}: |x + y| \leq |x| + |y|\]
+	Diese Ungleichung wird auch die \textbf{Dreiecksungleichung} gennant. Sie folgt, in dem wir $-|x| \leq x \leq |x|$ und $-|y| \leq y \leq |y|$ und anschliessend auf
+	\[-(|x| + |y|) \leq x + y \leq |x| + |y|\]
+	anwenden.
+\end{corollary}
+
+\begin{corollary}{(umgekehrte Dreiecksungleichung)}
+	\[\forall x, y \in \mathbb{R}: \big||x| - |y|\big| \leq |x - y|\]
+	Denn Dreiecksungleichung zeigt:
+	\[|x| \leq |x - y + y| \leq |x - y| + |y|\]
+	was zu $|x| - |y| \leq |x - y|$ führt. Durch Vertauschen von $x, y$ erhalten wir $|y| - |x| \leq |x - y|$. Also $\big||x| - |y|\big| \leq |x - y|$ wie gewunscht. 
+\end{corollary}
+
+\begin{definition}{(Offent und abgeschlossene Teilmenge)}
+\end{definition}
+
+\subsection{Der Absolutbetrag auf den komplexen Zahlen}
 \end{document}

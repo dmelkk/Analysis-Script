@@ -1,0 +1,194 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\subsection{Definition der naturälichen Zahlen und vollständige Induktion}
+\begin{definition}{(Induktive Teilemenge)}
+	Eine Teilmenge $M \subseteq \mathbb{R}$ ist \textbf{induktiv}, falls folgende Eigenschaften gelten:
+	\begin{enumerate}
+		\item $1 \in M$
+		\item $\forall x \in \mathbb{R} : x \in M \implies x+1 \in M$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}{(Natürliche Zahlen)}
+	Wir definieren die Teilmenge der \textbf{natürlichen Zahlen} $\mathbb{N} \subseteq \mathbb{R}$ als Durchschnitt aller iduktiven Teilmengen von $\mathbb{R}$
+	\begin{equation}
+		\mathbb {N} = \bigcap _{M \subseteq \mathbb {R} \text { induktiv}} M. 
+	\end{equation}
+\end{definition}
+
+\begin{lemma}{(Kleinste induktive Menge)}\label{realn:smallest-set}
+	Die natürlichen Zahlen $\mathbb{N}$ bilden eine induktive und somit die kleinste induktive Teilmenge der reellen Zahlen.
+\end{lemma}
+
+\begin{proof}
+	 Wir haben oben bereits gesehen, dass $1 \in \mathbb{N}$ ist. Falls nun $n \in \mathbb{N}$ ist und $M \subseteq \mathbb{R}$ eine belibiege induktive Teilmenge ist, dann gilt auch $n \in M$ (wegen der Definition von $\mathbb{N}$). Da $M$ induktiv ist, gilt $n+1 \in M$. Da $M$ aber eine belibiege induktive Teilmenge war, liegt $n+1$ in jeder induktiven Teilmenge und somit auch in $\mathbb{N}$ per Definition von $\mathbb{N}$. Wir haben für $\mathbb{N}$ also beide Eigenschaften einer induktiven Teilmenge nachgewiesen und das Lemma folgt.
+\end{proof}
+ 
+\begin{proposition}{(Vollständige Induktion)}\label{realn:induktion}
+	Falls für eine Aussage $A(n)$ über natürlichen Zahlen $n \in \mathbb{N}$
+	\begin{itemize}
+		\item (Induktionsanfang) $A(1)$ 
+		\item (Induktionsschritt) $\forall n \in \mathbb{N} : (A(n) \implies A(n+1))$
+	\end{itemize}
+	gelten, dann gilt $A(n)$ für alle $n \in \mathbb{N}$. 
+\end{proposition}
+
+\begin{proof}
+	Wir definieren $E = \{n \in \mathbb{N} | A(n)\}$, womit folgenden Aussagen gelten.
+	\begin{itemize}
+		\item $1 \in E$, da $A(1)$ auf Grund des Induktionsanfanges gilt.
+		\item $\forall x \in \mathbb{R}$ gilt, dass $x \in E$ nach Definition $x \in \mathbb{N}$ und auf Grund des Induktionsschrittes auch $x+1 \in E$ impliziert. 
+	\end{itemize}
+	Dacher ist $E$ eine induktive Menge und es folgt, dass $\mathbb{N} \subseteq E$ nach Definition von $\mathbb{N}$. Also gilt $A(n)$ für alle natürlichen Zahlen $n \in \mathbb{N}$.
+\end{proof}
+
+\begin{lemma}{(Addition und Multiplikation auf $\mathbb{N}$)}\label{realn:sum_and_comp_for_N}
+Für alle $n, m \in \mathbb{N}$ gilt $n + m \in \mathbb{N}$ und $n \cdot m \in \mathbb{N}$. 
+\end{lemma}
+
+\begin{proof}
+	Sei $A(n)$ die Aussage $\forall m \in \mathbb{N} : m + n \in \mathbb{N}$. Dann gilt $A(1)$, denn falls $m \in \mathbb{N}$, dann gilt auch $m+1 \in \mathbb{N}$, da $\mathbb{N}$ induktiv ist wegen Lemma \ref{realn:smallest-set}. Dies ist der Induktionsanfang. Für den Induktionsschritt nehmen wir also an, dass $A(n)$ für $n \in \mathbb{N}$ gilt oder in anderen Worten, dass für alle $m \in \mathbb{N}$ auch $m+n \in \mathbb{N}$ gilt. Wegen Lemma \ref{realn:smallest-set} impliziert letzteres aber auch $m + n + 1 \in \mathbb{N}$ für alle $m \in \mathbb{N}$ und wir erhalten die Aussage $A(n+1)$. Vollständige Induktion zeigt daher $\forall n \in \mathbb{N}: A(n)$, was gerade die Aussage $\forall n,m \in \mathbb{N}: n + m \in \mathbb{N}$ ist.
+
+	Für Multiplikation definieren wir $B(n)$ für $n \in \mathbb{N}$ als die Aussage $\forall m \in \mathbb{N}: m \cdot n \in \mathbb{N}$. Dann gilt $B(1)$, da für alle $m \in \mathbb{N}$ auch $m \cdot 1 \in \mathbb{N}$. Falls nun $B(n)$ für $n \in \mathbb{N}$ gilt, dann folgt aus $m \in \mathbb{N}$ auch $m \cdot n \in \mathbb{N}$ und aus ersten Teil des Lemmas auch
+	\begin{equation}
+		m \cdot (n + 1) = m \cdot n + m \in \mathbb{N}
+	\end{equation}
+	Da $m$ biliebig war, gilt also $B(n) \implies B(n+1)$ und das Lemma folgt mittels vollständiger Induktion.
+\end{proof}
+
+\begin{lemma}{(Anordnung von $\mathbb{N}$)}\label{realn:order}
+	\begin{itemize}
+		\item Für $n \in \mathbb{N}$ gilt $n \in \mathbb{N}$ oder $n-1 \in \mathbb{N}$.
+		\item Für $m, n \in \mathbb{N}$ mit $m \leq n \leq m+1$ gilt $n = m$ oder $n = m+1$.
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Für die erste Aussage zeigen wir, dass die Menge $M = \{1\} \cup \{n \in \mathbb{N} | n-1 \in \mathbb{N}\}$ die natürlichen Zahlen $\mathbb{N}$ enthält. In der Tat ist die Menge $M$ induktiv, da $1 \in M$ und da für $n \in M$ auch $(n+1)-1 = n \in \mathbb{N}$ und damit $n + 1 \in M$ gilt. Nach Definition von $\mathbb{N}$ ist also $N \subseteq M$ wie gewünscht.
+	
+	Für die zweite Behauptung definieren wir für $n \in \mathbb{N}$ die Aussage $A(n)$ durch
+	\begin{equation}
+		\forall m \in \mathbb{N} : ((m \leq n \leq m+1) \implies n \in \{m, m+1\})
+	\end{equation}
+	Dann gitl $A(1)$, denn falls $m \in \mathbb{N}$ die Ungleichung $m \leq 1 \leq m+1$ erfüllt, dann gilt wegen $m \geq 1$ auch $m = 1 = n$.
+	
+	Angenommen es gilt nun $A(n)$ für ein $n \in \mathbb{N}$ und wir wollen $A(n+1)$ zeigen. Sei also $m \in \mathbb{N}$ so dass $m \leq n \leq m + 1$ gilt. Falls $m = 1$ ist, dann gilt $1 \leq n + 1 \leq 2 = 1 + 1$ und damit $n \leq 2 - 1 = 1$. Wegen $n \geq 1$ folgt $n = 1 = m$ und somit $n + 1 = m + 1$. Falls aber $m \neq 1$ ist, dann ist wegen der ersten Behauptung $m - 1 \in \mathbb{N}$ und $m - 1 \leq n \leq m$. Da wir aber $A(n)$ angenommen haben, gilt $n \in \{m - 1, m\}$ und daher $n + 1 \in \{m, m + 1\}$.
+	
+	Wir haben also den Iduktionsanfang $A(1)$ und den Induktionsschritt $A(n) \implies A(n + 1)$ für eine beliebiges $n$ gezeigt. Daher gilt $A(n)$ für alle $n \in  \mathbb{N}$ und das Lemma folgt.
+\end{proof}
+
+\begin{proposition}{(Vollständige Induktion)}\label{realn:induktion}
+	Falls für eine Aussage $A(n)$ über natürlichen Zahlen $n \in \mathbb{N}$ die Aussage 
+	\begin{equation}
+		\text{(Induktion)} \forall n \in \mathbb{N}: ((\forall k \in \mathbb{N}: (k < n \implies A(k))) \implies A(n))
+	\end{equation}
+	erfüllt ist, dann gilt $A(n)$ für alle $n \in \mathbb{N}$
+\end{proposition}
+
+\begin{proof}
+	Wir definieren $B(n)$ für $n \in \mathbb{N}$ durch 
+	\begin{equation}
+		\forall k \in \mathbb{N} : k \leq n  \implies A(k)
+	\end{equation}
+	Mit vollständige Induktion (\ref{realn:induktion}) und Anordnung von $\mathbb{N}$ (\ref{realn:order}) möchten wir nun zeigen, dass $B(n)$ für alle $n \in \mathbb{N}$ gilt. Inbesondere folgt damit, dass $A(n)$ für alle $n \in \mathbb{N}$ gilt, was den Beweis des Satzes abschliessen wird.
+	
+	Wir zeigen zuerst den Induktionsanfang, also dass $B(1)$ gilt. Da aber $k = 1$ die einzige natürliche Zahl mit $k \leq 1$ ist, genügt es, die Aussage $A(1)$ zu verifizieren. Hierfür verwenden wir die Annahme im Satz für $n = 1$, also die Aussage
+	\begin{equation}
+		(\forall k \in \mathbb{N} : (k < 1 \implies A(k))) \implies A(1)
+	\end{equation}
+	Da es keine natürliche Zahlen kleiner $1$ gibt, ist für jedes $k \in \mathbb{N}$ die Aussage $k < 1$ falsch, womit $(k < 1 \implies A(k))$ richtig ist. Also gilt die Voraussetzung der im Satz angenommenen Implikaion für $n = 1$, und es folgt $A(1)$ (und damit $B(1)$ wie gewünscht).
+	
+	Sei nun $n \in \mathbb{N}$ gegeben. Wir wollen Induktionsschritt $B(n) \implies B(n+1)$ beweisen. Also nehmen wir an, dass $B(n)$ bereits gilt. Die Aussage $B(n+1)$ ist durch
+	\begin{equation}
+		\forall k \in \mathbb{N}: k \leq n+1 \implies A(k)
+	\end{equation}
+	gegeben. Für $k \in \mathbb{N}$ ist $k < n + 1$ auf Grund von Lemma \ref{realn:order} äquivalent zu $k \leq n wedge k = n$. Die Aussage $B(n)$ ist damit zu 
+	\begin{equation}
+		\forall k \in \mathbb{N}: k < n + 1 \implies A(k)
+	\end{equation}
+	äquivalent. Wegen der Annahme im Satz angewenadt auf $n + 1$ impliziert dies aber $A(n+1)$, was auf Grund obiger Äquivalenz gemeinsam mit $B(n)$ die Aussage $B(n+1)$ zeigt. Dies schliesst den Induktionsschritt und damit den Beweis des Satzes ab.
+\end{proof}  
+
+\begin{proposition}{(Wohlordnung der natürlichen Zahlen)}\label{realn:full-order_N}
+	Sei $M \subseteq \mathbb{N}$ eine nichr-leere Teilmenge. Dann hat $M$ eindeutig bestimmtes kleinstes Element, das heisst
+	\begin{equation}
+		\exists !n_0 \in M \forall n \in M : n \geq n_0
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Die Eindeutigkeit eines solches kleinsten Elements folgt direkt: Sind $n_0, n_0' \in M$ zwei kleinste Elemente, dann gilt $n_0' \geq n_0$, da $n_0$ ein kleinstes Element ist und $n_0 \geq n_0'$ da $n_0'$ ein kleinstes Element ist. Also gilt $n_0' = n_0$.
+	
+	Um die Existenz eines kleinsten Element zu zeigen, verwenden wir die Kontraposition. Wir nehmen also an, dass $M$ kein kleinstes Element hat, und wollen zeigen, dass $M$ leer ist. Hierzu definieren wir für alle $n$ eine Aussage $A(n)$ durch $n \notin M$.
+	
+	Sei $n \in \mathbb{N}$. Dann bedeutet die Aussage $\forall k \in \mathbb{N} : k < n \implies A(n)$ genau, dass es unterhalb von $n$ keine Elemente in $M$ gibt. Da wir angenommen haben, dass $M$ kein kleinstes Element hat, sehen wir, dass $n$ nicht in $M$ liegen kann. Also gilt
+	\begin{equation}
+		(\forall k \in \mathbb{N} : k < n \implies A(k)) \implies A(n)
+	\end{equation}
+	für jedes $n \in \mathbb{N}$. Die vollständige Induktion in Satz \ref{realn:induktion} zeigt nun, dass $A(n)$ für alle $n \in \mathbb{N}$ gilt. Damit ist $M$ die leere Menge. 
+\end{proof}
+
+\begin{lemma}{(Subtraktion von $\mathbb{N}$)}
+	Für alle $n, m \in \mathbb{N}$ mit $m < n$ gilt $n - m \in \mathbb{N}$.
+\end{lemma}
+
+\begin{proof}
+	Sei A(n) für $n \in \mathbb{N}$ die Aussage
+	\begin{equation}
+		\forall m \in \mathbb{N}: m < n \implies n - m \in \mathbb{N}
+	\end{equation}
+	Dann gilt $A(1)$, denn es existiert kein $m \in \mathbb{N}$ mit $m < 1$. Angenommen $A(n)$ gilt für ein $n \in \mathbb{N}$ und sei $m \in \mathbb{N}$ mit $m < n + 1$. Nach Lemma \ref{realn:order} ist entweder $m = n$ oder $ m < n$. Im ersten Fall gilt $(n + 1) - m = 1 \in \mathbb{N}$. Im zweiten Fall gilt $(n + 1) - m = (n - m) + 1 \in \mathbb{N}$ nach $A(n)$. Also gilt $A(n)$ für alle $n \in \mathbb{N}$ nach vollständiger Induktion.
+\end{proof}
+
+\subsection{Die ganzen Zahlen}
+Die \textbf{ganzen Zahlen} sind als Teilmenge von $\mathbb{R}$ durch 
+\begin{equation}
+	\mathbb{Z} = \mathbb{N} \sqcup \{0\} \sqcup \{-n | n \in \mathbb{N}\} = mathbb{N}_0 \sqcup -\mathbb{N}
+\end{equation}
+definiert.
+
+\begin{lemma}{(Addition und Multplikation auf $\mathbb{Z}$)}
+Die ganzen Zahlen sind unter Addition und Multiplikation abgeschlossen, das heisst, für alle $m, n \in \mathbb{Z}$ gilt $m + n \in \mathbb{Z}$ und $m \cdot n \in \mathbb{Z}$.
+\end{lemma}
+
+\begin{proof}
+	Für Multiplikation sieht man dies sehr direkt: Falls $n, m \in \mathbb{N}$, dann gilt offenbar $m \cdot n = (-m) \cdot (-n) \in \mathbb{N} \subseteq \mathbb{Z}$ und $(-m) \cdot n = m \cdot (-n) = -m \cdot n \in -\mathbb{N} \subseteq \mathbb{Z}$ nach Lemma \ref{realn:sum_and_comp_for_N}. Falls $m$ oder $n$ Null ist, gilt ebenso $m \cdot n = 0 \in \mathbb{Z}$.
+	
+	Für die Addition verwenden wir die Eigenschaften von $\mathbb{N}$ in Lemma 2.19 und Lemma 2.25. Seien $m,n\in \mathbb{Z}$. Falls m oder n Null sind, gibt es nichts zu zeigen. Seien also $m,n \in \mathbb{N}$. Dann ist $m+n \in \mathbb {N}\subseteq \mathbb {Z}$ und $-m-n = -(m+n) \in -\mathbb{N} \subseteq \mathbb{Z}$. Falls $n > m$, dann ist $n-m\in \mathbb{N}\subseteq \mathbb{Z}$ und $-n + m = -(n-m) \in \mathbb{Z}$. Analoges gilt falls $n < m$. Falls $n=m$, ist $n-m = 0 \in \mathbb{Z}$. Dies deckt alle Möglichkeiten ab und das Lemma folgt.
+\end{proof}
+
+\subsection{Die rationalen Zahlen}
+Die \textbf{rationalen Zahlen} sind definiert als die Teilmange von Quotienten 
+\begin{equation}
+	\mathbb{Q} = \left\{\frac{m}{n}| m \in \mathbb{Z}, n \in \mathbb{N}\right\} \subseteq \mathbb{R}
+\end{equation}  
+
+\begin{lemma}{(Rationale Zahlen)}
+	Die rationalen Zahlen bilden einen Unterkörper von $\mathbb{R}$, das heisst, für alle $r, s \in \mathbb{Q}$ gilt $-r, r + s, r \cdot s \in \mathbb{Q}$ und auch $r^{-1} \in \mathbb{Q}$, falls $r \neq 0$.
+\end{lemma}
+
+\begin{lemma}{(Quadratwurzel aus 2)}
+	Die reele Zahl $\sqrt{2}$ ist irrational. Insbesondere erfüllen die rationalen Zahnlen nicht das Vollständigkeitsaxiom.
+\end{lemma}
+
+\begin{proof}
+	Wir nehmen per Wiederspruch an, dass $\sqrt{2}$ rational ist und schreiben $2 = (\frac{m}{n})^2$ für $m \in \mathbb{N}$ und kleinste mögliche $n \in \mathbb{N}$ (es ist nach Satz \ref{realn:full-order_N} möglich). Insbesondere gilt also $2n^2 = m^2$ und flglich
+	\begin{equation}
+		2(m-n)^2 = 2m^2 - 4mn + 2n^2 = 4n^2 - 4mn + m^2 = (2n - m)^2
+	\end{equation}
+	Also gilt $\left(\frac{2n - m}{m - n}\right)^2 = 2$. Da $0 < m - n < n$, erhalten wir einen kleineren Nenner, den der verwendet werden kann, um $\sqrt{2}$ darzustellen. Dies widerspricht der minimalen Wahl von $n$. Somit ist $\sqrt{2}$ irrational.
+\end{proof}
+
+\subsection{Division mit Rest und Anfänge der Zahlentheorie}
+
+\begin{proposition}{(Division mit Rest)}
+	Für alle $n \in \mathbb{N}_0$ und $d \in \mathbb{N}$ gibt es ein $q \in \mathbb{N}_0$ und ein $r \in \mathbb{N}_0$ mit $r < d$, welches wir den Rest nennen, so dass $n = qd + r$.
+\end{proposition} 
+
+\begin{proof}
+	Für $n < d$ stimmt die Behauptung, da wir dann $q = 0$ und $r = n$ wählen können. Genauso stimmt sie für $n = d$, da wir dann $q = 1$ und $r = 0$ wählen können. Nehmen wir nun an, dass der Satz nicht zutrifft. Dann gibt es nach der Wohlordnung von $\mathbb{N}$ in Satz \ref{realn:full-order_N} ein kleinstes $n_0 \in \mathbb{N}$, für das die Division durch ein $d \in \mathbb{N}_0$ nich funktioniert. Nach obigem muss $n_0 > d \geq 1$ und damit auch $n_0 \geq 2$ gelten.
+	
+	Insbesondere ist $n = n_0 - 1 \in \mathbb{N}$ und es gibt ein Rest $r \in \mathbb{N}_0$ mit $r < d$, so dass $n_0-1 = n = qd + r$ für $q \in \mathbb{N}_0$. Damit gilt $n_0 = qd + r + 1$. Falls $r < d - 1$, dann ist $r + 1 < d$ und $n_0$ erfüllt doch Division durch $d$ mit Rest. Falls $r = d - 1$, dann ist $d = r + 1$ und $n_0 = qd + r + 1 = qd + d = (q + 1)d + 0$ und $n_0$ erfüllt Division durch $q$ mit Rest $0$. Nach der Anordnung von $\mathbb{N}$ im Lemma \ref{realn:order} erfüllt $r$ entweder $r < d - 1$ oder $r = d - 1$ und daher wurden alle Möglichkeiten für $r$ abgedeckt. Für $n_0$ ist Division durch $d$ mit Rest daher möglich, was ein Widerspruch darstellt. Also gilt der Satz.
+\end{proof}
+\end{document}

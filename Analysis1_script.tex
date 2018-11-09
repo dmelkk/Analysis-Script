@@ -1,0 +1,74 @@
+\documentclass[12pt, twoside, openright]{report}
+% ------------- Graphic ------------------------
+\usepackage{svg}
+\usepackage{graphicx}
+\graphicspath{{images/}{../images/}}
+% ----------------------------------------------
+\usepackage[utf8]{inputenc} % change coding to UTF-8
+% ----------- Some math packages ----------------
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm} 
+% -----------------------------------------------
+\usepackage{yfonts} % aditional fonts
+\usepackage{enumitem} % smart lists
+\usepackage{enumitem, hyperref} % links
+\usepackage{subfiles}
+
+% setting depth of counting
+% \setcounter{secnumdepth}{3}
+
+% To print the traditional QED (quod erat demonstrandum) at the end of a proof.
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% --------- style of additional sections -----------
+\theoremstyle{definition} % Theorem style
+\newtheorem{theorem}{Theorem}[chapter]
+
+\theoremstyle{definition} % Definition style
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{definition} % Proposition style
+\newtheorem{proposition}[theorem]{Satz}
+
+\theoremstyle{definition} % Axeom style
+\newtheorem{axiom}[theorem]{Axiom}
+
+\theoremstyle{definition} % Lemma style
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{remark} % Remark style
+\newtheorem*{remark}{Remark}
+% --------- end of section styling -----------------
+
+
+\title{
+	{Analysis Script}\\
+	{\large RWTH Aachen}\\
+}
+
+\author{Melkonian Dmytro}
+\date{14 October 2018}
+
+\begin {document}
+	\maketitle
+
+	\tableofcontents	
+	
+		
+	\chapter{Die reelen Zahlen}
+	
+		\section{Die Axiome der reellen Zahlen}
+		\subfile{sections/section1-1.tex}
+		
+		\section{Die natürlichen Zahlen}
+		\subfile{sections/section1-2.tex}
+		
+		\section{Die komplexen Zahlen}
+		\subfile{sections/section1-3.tex}
+		
+		\section{Intervalle und der Absolutbetrag}
+		\subfile{sections/section1-4.tex}
+	
+
+\end {document}

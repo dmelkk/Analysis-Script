@@ -1,0 +1,79 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\subsection{Körperaxiome}
+
+\begin{definition}\label{realnumbers}
+	Eine Menge $\mathbb{R}$ zusammen mit einer Abbildung
+	\begin{equation}
+		+ : \mathbb{R} \times \mathbb{R} \to \mathbb{R}, (x, y) \mapsto x + y,
+	\end{equation}
+	die wir \textbf{Addition} nennen, einer Abbildung
+	\begin{equation}
+		\cdot : \mathbb{R} \times \mathbb{R} \to \mathbb{R}, (x, y) \mapsto x \cdot y,
+	\end{equation}
+	die wir \textbf{Multiplikation} nennen, und einer Relation $\leq$ auf $\mathbb{R}$, die wir \textbf{kleiner gleich} nennen, wird als Menge der \textbf{reellen Zahlen} bezeichnet, falls Axiomen, die wird weiter eingegeben, erfüllt sind.
+	\end{definition}
+
+\begin{remark}
+	Die Addition erfüllt folgende Eigenschaften:
+	\begin{enumerate}
+		\item \label{realn:first}(Nullelement) $\exists{0}\in\mathbb{R}\forall{x}\in\mathbb{R}: x + 0 = 0 + x = x$.
+		\item \label{realn:second}(Additives Inverses) $\forall{x}\in\mathbb{R}\exists(-x)\in\mathbb{R}: x + (-x) = (-x) + x = 0$.
+		\item \label{realn:third}(Assoziativgesetz) $\forall{x, y, z} \in \mathbb{R} : (x + y) + z = x + (y +z)$.
+		\item \label{realn:forth}(Kommutativgesetz) $\forall{x, y} \in \mathbb{R} : x + y = y + x$.
+	\end{enumerate}
+\end{remark}
+
+\begin{remark}
+	Wir sagen, dass die reellen Zahlen $\mathbb{R}$ gemeinsam mit der Abbildung (Verknüpfung) $+ : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ eine \textbf{kommutative} oder \textbf{abelsche Gruppe} bilden, da die Axiome \ref{realn:first}-\ref{realn:forth} gerade die Axiome einer kommutativen Gruppe bilden 
+\end{remark}
+
+\begin{remark}
+	Die Multiplikation erfüllt folgende Eigenschaften:
+	\begin{enumerate}[resume]
+		\item \label{realn:fifth}(Einselement) $\exists{1}\in\mathbb{R}\setminus\{0\} \forall{x}\in\mathbb{R}: x \cdot 0 = 0 \cdot x = x$.
+		\item \label{realn:sexth}(Multiplikative Inverse) $\forall{x}\in\mathbb{R}\setminus\{0\} \exists(x^{-1})\in\mathbb{R}: x \cdot (x^{-1}) = (x^{-1}) \cdot x = 1$.
+		\item \label{realn:seventh}(Assoziativgesetz) $\forall{x, y, z} \in \mathbb{R} : (x \cdot y) \cdot z = x \cdot (y \cdot z)$.
+		\item \label{realn:eighth}(Kommutativgesetz) $\forall{x, y} \in \mathbb{R} : x \cdot y = y \cdot x$.
+	\end{enumerate}
+	Des Weiteren muss bei Kombination der Addition und der Multiplikation folgendes Gesetz gelten.
+	\begin{enumerate}[resume]
+		\item \label{realn:nineth}(Distributivgesetz) $\forall{x, y, z} \in \mathbb{R}: (x + y) \cdot z = (x \cdot z) + (y \cdot z)$ 
+	\end{enumerate}
+\end{remark}
+
+\subsection{Angeordnete Körper}
+\begin{axiom}{(Anordnung)}
+	Die Relation $\leq$ auf $\mathbb{R}$ erfüllt die folgenden vier Axiome
+	\begin{enumerate}[resume]
+		\item \label{realn:tenth}(Reflexivität) $\forall x \in \mathbb {R}: x \leq x$
+		\item \label{realn:eleventh}(Antisymmetrie) $\forall x,y \in \mathbb {R}: \big ((x \leq y \wedge y \leq x) \implies x=y\big )$
+		\item \label{realn:twelfht}(Transitivität) $\forall x,y,z \in \mathbb {R}: \big ((x\leq y\wedge y \leq z) \implies x \leq z\big )$
+    	\item \label{realn:thirteenth}(Linearität) $\forall x,y \in \mathbb {R}: \big (x \leq y \vee y \leq x\big )$
+	\end{enumerate}
+	Die Axiome \ref{realn:tenth} - \ref{realn:twelfth} sind die Axiome einer \textbf{Ordnung} und zusammen mit Axiome \ref{realn:thirteenth} bilden sie die Axiome einer \textbf{linearen} (oder auch \textbf{totalen}) \textbf{Ordnung}. Damit die Relation $\leq$ auf dem Körper $\mathbb{R}$ nützlich ist, benötigen wir die folgende Axiome, die die Relation mit der Körperstruktur koppeln
+\end{axiom}
+
+\begin{axiom}{(Kompatibilität von $\leq$)}
+	Wir verlangen
+	\begin{enumerate}[resume]
+	\item \label{kom:first}$(\leq und +)\forall x, y, z \in \mathbb{R}: (x \leq y \implies x + z \leq y + z)$
+	\item \label{kom:second}$(\leq und \cdot)\forall x, y \in \mathbb{R}: ((0 \leq x \wedge 0 \leq y) \implies 0 \leq x \cdot y)$
+	\end{enumerate}
+\end{axiom}
+
+\subsection{Das Volständigkeitsaxiom}
+\begin{axiom}{(Vollständigkeit)} \label{realn:sixteenth}
+	Falls $X, Y$ zwei nicht-leere Teilmenge von $\mathbb{R}$ sind und für alle $x \in X$ und $y \in Y$ die Ungleichung $x \leq y$ gilt, dann gibt es ein $c \in \mathbb{R}$, das zwischen $X$ und $Y$ liegt in dem Sinn, als dass für alle $x \in X$ und $y \in Y$ die Ungleichung $x \leq c \leq y$ gilt. Formal:
+	\begin{equation}
+	\begin{split}
+		\forall X, Y \subseteq \mathbb{R}: ((X \neq \emptyset \wedge Y \neq \emptyset \wedge \forall x \in X \forall y \in Y : x \leq y)\\
+		 \implies (\exists c \in \mathbb{R} \forall x \in X \forall y \in Y : x \leq c \leq y))
+	\end{split} 
+	\end{equation}
+	Wenn $\mathbb{R}$ die Axiome \ref{realn:first} - \ref{realn:sixteenth} erfüllt, dann sprechen wir auch von einem \textbf{vollständig angeordneten Körper}. Wir werden uns die reelen Zahlen häufig als die Punkte auf einer Geraden vorstellen, wobei wir deswegen die Gerade auch die \textbf{Zahlengerade} nennen.
+\end{axiom}
+
+\subsection{Verwendung der reellen Zahlen und der Axiome}
+\end{document}

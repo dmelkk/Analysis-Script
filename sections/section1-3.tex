@@ -1,0 +1,121 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+Unter Verwendung der reellen Zahlen können wir die Menge der komplexen Zahlen als
+\begin{equation}
+	\mathbb {C} = \mathbb {R}^2 = \left \lbrace {(x,y)} \mid {x,y\in \mathbb {R}}\right \rbrace
+\end{equation}
+	definieren. Wir schreiben ein Element $z = (x,y) \in \mathbb {C}$ viel häufiger in der Form $z = x+y\mathrm{i}$, wobei das Symbol $\mathrm{i}$ als die \textbf{imaginäre Einheit} bezeichnet wird. Man beachte, dass bei dieser Identifikation $+$ vorerst als Ersatz für das Komma zu verstehen ist. Die Zahl $x \in \mathbb {R}$ wird als der \textbf{Realteil} von $z$ bezeichnet und man schreibt $x = \operatorname {Re}(z)$; die Zahl $y = \operatorname {Im}(z) \in \mathbb {R}$ ist der \textbf{Imaginärteil} von $z$. Die Elemente von $\mathbb {C}$ mit Imaginärteil $0$ bezeichnet man auch als \textbf{reell} und die Elemente mit Realteil $0$ als \textbf{rein imaginär}. Via der injektiven Abbildung $x\in \mathbb {R} \mapsto x+0\mathrm{i} \in \mathbb {C}$ identifizieren wir $\mathbb {R}$ mit der Teilmenge der reellen Elemente von $\mathbb {C}$ (der "$x$-Achse" ).
+	
+	\includesvg{../images/komplexe_ebene2}
+	
+	Die Menge $\mathbb {C}$ (inklusive deren graphische Darstellung wie oben) wird ganz im Sinne der Identifikation $\mathbb {C} = \mathbb {R}^2$ auch \textbf{komplexe Ebene} (alternativ \textbf{Gausssche Zahlenebene} oder auch \textbf{Argand-Ebene}) genannt. In der geometrischen Denkweise wird die Menge der reellen Punkte als die \textbf{reelle Achse} und die Menge der rein imaginären Punkte als die \textbf{imaginäre Achse} bezeichnet.
+	
+	Wie Sie vielleicht schon erwartet haben, soll $\mathrm{i}$ eine Wurzel von $-1$ sein. Formal ausgedrückt, wollen wir, dass $\mathbb {C}$ einen Körper darstellt, in dem die Rechenoperationen von $\mathbb {R}$ "verallgemeinert" werden, und dass $\mathrm {i}^2 = \mathrm{i} \cdot \mathrm{i} = -1$ gilt. Die Addition auf $\mathbb {C}$ definieren wir "komponentenweise" durch
+	\begin{equation}
+		(x_1+y_1\mathrm{i}) + (x_2+y_2\mathrm{i}) = (x_1+x_2) + (y_1+y_2)\mathrm{i}
+	\end{equation}  
+	für $x_1,x_2,y_1,y_2 \in \mathbb {R}$. Die Multiplikation auf $\mathbb{C}$ definieren wir hingegen durch 
+	\begin{equation}
+		(x_1+y_1\mathrm {i})\cdot (x_2+y_2\mathrm {i}) = (x_1x_2-y_1y_2) + (x_1y_2+y_1x_2)\mathrm {i}
+	\end{equation}
+	für $x_1,x_2,y_1,y_2 \in \mathbb {R}$. Insbesondere gilt $(0+1 \mathrm {i})^2 = -1+0\mathrm {i}$ und die Addition und Multiplikation auf $\mathbb {C}$ erweitern die entsprechenden Operationen auf $\mathbb {R}$.
+	
+\begin{proposition}{(Komplexe Zahlen)}\label{complex:complex_numbers}
+	Mit den oben definierten Verknüpfungen definiert $\mathbb {C}$ einen Körper, den \textbf{Körper der komplexen Zahlen}. Hierbei ist die Null gleich $0+0\mathrm {i}$ und die Eins gleich $1+0\mathrm {i}$.
+\end{proposition}
+
+\begin{proof}
+	Wir verifizieren die Körperaxiome. Wie wir sehen werden, folgen die Eigenschaften der Addition auf $\mathbb {C}$ aus den Eigenschaften der Addition auf $\mathbb {R}$. Die Addition ist kommutativ: Seien $x_1,x_2,y_1,y_2 \in \mathbb {R}$. Dann gilt
+	\begin{equation}
+	\begin{aligned}
+		(x_1+y_1\mathrm {i}) + (x_2+y_2\mathrm {i}) &= (x_1+x_2)+(y_1+y_2)\mathrm {i} \\ &= (x_2+x_1)+(y_2+y_1)\mathrm {i}\\ &= (x_2+y_2\mathrm {i}) +(x_1+y_1\mathrm {i}).
+	\end{aligned}
+	\end{equation}  
+	Das Element $0+0\mathrm {i}$ ist ein (und schlussendlich also das) Nullelement der Addition, denn 
+	\begin{equation}
+		(0+0i) + (x+y\mathrm {i}) = (0+x)+(0+y)\mathrm {i} = x+y\mathrm {i}
+	\end{equation}
+	für alle $x,y\in \mathbb {R}$. Die additive Inverse eines Elements $x+y\mathrm {i}$ für $x,y \in \mathbb {R}$ ist $(-x)+(-y)\mathrm {i}$, denn 
+	\begin{equation}
+	\begin{aligned}
+		(x+y\mathrm {i})+((-x)+(-y)\mathrm {i}) &= ((-x)+(-y)\mathrm {i}) + (x+y\mathrm {i}) \\ &= (x+(-x)) + (y+(-y)) \mathrm {i} = 0+0\mathrm {i}.
+	\end{aligned}
+	\end{equation} 
+	Die Addition ist assoziativ: Seien $x_i,y_i \in \mathbb {R}$ für $i \in \left \lbrace {1,2,3} \right \rbrace$. Dann gilt
+	\begin{equation}
+	\begin{aligned}
+		((x_1+y_1\mathrm {i}) + &(x_2+y_2\mathrm {i}))+(x_3+y_3\mathrm {i}) \\ & = ((x_1+ x_2)+(y_1+y_2)\mathrm {i})+(x_3+y_3\mathrm {i}) \\ &= (x_1+x_2+x_3) + (y_1+y_2+y_3)\mathrm {i} \\ &= \ldots = (x_1+y_1\mathrm {i}) + ((x_2+y_2\mathrm {i})+(x_3+y_3\mathrm {i})).
+	\end{aligned}
+	\end{equation}  
+	Das Element $1+0\mathrm {i}$ ist ein Einselement, denn $1+0\mathrm {i} \neq 0+0i$ und für $x,y\in \mathbb {R}$ gilt 
+	\begin{equation}
+	\begin{aligned}
+		(1+0\mathrm {i})\cdot (x+y\mathrm {i}) &= (x+y\mathrm {i})\cdot (1+0\mathrm {i}) \\ &= (x\cdot 1- y \cdot 0) + (x \cdot 0+ y \cdot 1) \mathrm {i} = x+y\mathrm {i}.
+	\end{aligned}
+	\end{equation}
+	Wir geben nun die multiplikative Inverse eines Elements $x+y\mathrm {i} \in \mathbb {C}$, wobei $x,y\in \mathbb {R}$ und $x+y\mathrm {i} \neq 0+0i$ (das heisst $x\neq 0$ oder $y \neq 0$), an. Wir bemerken zuerst, dass $x^2+y^2 > 0$: Nehmen wir vorerst an, dass $x\neq 0$, dann ist $x^2 > 0$ und $y^2 \geq 0$ und damit $x^2+y^2 > 0$. Für $y \neq 0$ gilt ebenso $x^2\geq 0$ und $y^2 > 0$ und damit $x^2+y^2 > 0$. Die multiplikative Inverse ist gegeben durch $\frac {x}{x^{2}+y^{2}} + \frac {-y}{x^2+y^2}\mathrm {i}$, denn 
+	\begin{equation}
+	\begin{aligned}
+		(x+y\mathrm {i})&\cdot \left (\frac {x}{x^{2}+y^{2}} + \frac {-y}{x^2+y^2}\mathrm {i}\right )\\ &= \left (x \cdot \frac {x}{x^{2}+y^{2}} - y \cdot \frac {-y}{x^2+y^2}\right ) + \left (y\cdot \frac {x}{x^{2}+y^{2}} + x\cdot \frac {-y}{x^2+y^2} \right )\mathrm {i}\\ &= 1 + 0\mathrm {i}
+	\end{aligned}
+	\end{equation}  
+	Die verbleibenden beiden Axiome (Assoziativität der Multiplikation und Distributivität) lassen sich durch abstraktere Argumente beweisen, die aber auch etwas mehr Wissen benötigen. Wir bestätigen diese Axiome deswegen durch zwei konkrete Rechnungen.
+	
+	Die Multiplikation ist assoziativ: Seien $x_i,y_i \in \mathbb {R}$ für $i \in \left \lbrace {1,2,3} \right \rbrace$. Nun berechnet man 
+	\begin{equation}
+	\begin{aligned}
+		((x_1&+y_1\mathrm {i})\cdot (x_2+y_2\mathrm {i}))\cdot (x_3+y_3\mathrm {i}) \\ &= ((x_1x_2-y_1y_2)+(x_1y_2+y_1x_2)\mathrm {i})\cdot (x_3+y_3\mathrm {i})\\ &= (x_1x_2x_3-y_1y_2x_3-x_1y_2y_3-y_1x_2y_3)\\ &\quad \quad + (x_1y_2x_3+y_1x_2x_3+x_1x_2y_3-y_1y_2y_3)\mathrm {i}\\ &= (x_1+y_1\mathrm {i})\cdot ((x_2x_3-y_2y_3)+(y_2x_3+x_2y_3)\mathrm {i})\\ &= (x_1+y_1\mathrm {i})\cdot ((x_2+y_2\mathrm {i})\cdot (x_3+y_3\mathrm {i}))
+	\end{aligned}
+	\end{equation}
+	Es bleibt nur noch die Distributivität: Seien also $x_i,y_i \in \mathbb {R}$ für $i \in \left \lbrace {1,2,3} \right \rbrace$. Dann gilt  
+	\begin{equation}
+	\begin{aligned}[](x_1&+y_1\mathrm {i})\cdot ((x_2+y_2\mathrm {i}) + (x_3+y_3\mathrm {i})) \\ &= (x_1+y_1\mathrm {i})\cdot ((x_2+x_3)+(y_2+y_3)\mathrm {i} ) \\ &= (x_1x_2+x_1x_3-y_1y_2-y_1y_3) + (y_1x_2+y_1x_3+x_1y_2+x_1y_3)\mathrm {i} \\ &= ((x_1x_2-y_1y_2) + (y_1x_2+x_1y_2)\mathrm {i}) + ((x_1x_3-y_1y_3) + (y_1x_3+x_1y_3)\mathrm {i})\\ &=(x_1+y_1\mathrm {i})\cdot (x_2+y_2\mathrm {i}) + (x_1+y_1 \mathrm {i})\cdot (x_3+y_3\mathrm {i}),
+	\end{aligned}
+	\end{equation}
+	womit gezeigt wäre, dass $\mathbb {C}$ zusammen mit der oben definierten Addition und der oben definierten Multiplikation ein Körper ist. 
+\end{proof}
+
+\begin{definition}{(Konjugation)}
+	Die \textbf{komplexe Konjugation} ist die Abbildung
+	\begin{equation}
+		\overline { \phantom {z} }: \mathbb {C} \to \mathbb {C},\ z = x+y\mathrm {i} \mapsto \bar {z} = x-y\mathrm {i}.
+	\end{equation} 
+\end{definition}	
+
+\begin{lemma}{(Eigenschaften der Konjugation)}
+	Die komplexe Konjugation erfüllt folgende Eigenschaften:
+	\begin{enumerate}
+    	\item Für alle $z \in \mathbb {C}$ ist $z\bar {z}\in \mathbb {R}$ und $z \bar {z} \geq 0$. Des Weiteren gilt für alle $z \in \mathbb {C}$, dass $z\bar {z} = 0$ genau dann, wenn $z=0$.
+    	\item Für alle $z,w \in \mathbb {C}$ gilt $\overline {z+w}=\overline {z}+\overline {w}$.
+    	\item Für alle $z,w \in \mathbb {C}$ gilt $\overline {z\cdot w}=\overline {z}\cdot \overline {w}$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Seien $z = x + y\mathrm{i} \in \mathbb{C}$ und $\bar{z} = x - y\mathrm{i}$ für $x, y \in \mathbb{R}$. Dann gilt
+		\begin{equation}
+		\begin{aligned}
+			z\bar{z} &= (x + y\mathrm{i}) \cdot (x - y\mathrm{i}) &= x^2 + xy\mathrm{i} - xy\mathrm{i} - y^2\\ &= x^2 - y^2 \in \mathbb{R}
+		\end{aligned}
+		\end{equation}
+		\begin{equation}
+			z\bar{z} = 0 \implies x^2 - y^2 = 0 \implies x = 0 \wedge y = 0 \implies z = 0
+		\end{equation}
+		\item Seien $z=x_1+y_1\mathrm {i}$ und $w =x_2+y_2\mathrm {i}\in \mathbb {C}$ für $x_1,y_1,x_2,y_2 \in \mathbb {R}$. Dann gilt
+		\begin{equation}
+		\begin{aligned}
+			\overline {z+w} = (x_1+x_2) - (y_1+y_2) \mathrm {i} = (x_1-y_1\mathrm {i}) + (x_2-y_2\mathrm {i}) =\overline {z}+\overline {w}
+		\end{aligned}
+		\end{equation}
+		\item 
+		\begin{equation}
+		\begin{aligned}
+			\overline {z\cdot w} = (x_1x_2-y_1y_2) - (x_1y_2+y_1x_2)\mathrm {i} = (x_1-y_1\mathrm {i}) \cdot (x_2-y_2\mathrm {i}) =\overline {z}\cdot \overline {w},
+		\end{aligned}
+		\end{equation}   
+	\end{enumerate}
+\end{proof}
+
+\end{document}

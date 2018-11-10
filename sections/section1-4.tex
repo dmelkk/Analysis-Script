@@ -87,8 +87,51 @@
 	was zu $|x| - |y| \leq |x - y|$ führt. Durch Vertauschen von $x, y$ erhalten wir $|y| - |x| \leq |x - y|$. Also $\big||x| - |y|\big| \leq |x - y|$ wie gewunscht. 
 \end{corollary}
 
-\begin{definition}{(Offent und abgeschlossene Teilmenge)}
+\begin{definition}{(Offene und abgeschlossene Teilmenge)}
+	Ein Teilmanege $U \subseteq \mathbb{R}$ heisst \textbf{offen} (in $\mathbb{R}$), wenn 
+	\[\forall x \in U \exists \varepsilon > 0 : (x - \varepsilon, x + \varepsilon) \subseteq U\]
+	
+	Ein Teilmaenge heisst \textbf{abgeschlossen} (in $\mathbb{R}$), wenn ihr Komplement $\mathbb{R} \setminus A$ offen ist.
 \end{definition}
 
+
 \subsection{Der Absolutbetrag auf den komplexen Zahlen}
+
+\begin{definition}{(Der Absolutbetrag auf $\mathbb{C}$)}
+	Der \textbf{Absolutbetrag $|\cdot|$ auf $\mathbb{C}$} ist gegeben durch
+	\[|x + y\mathrm{i}| = \sqrt{x^2 + y^2}\]
+	für $x + y\mathrm{i} \in \mathbb{C}$
+	
+	An dieser Stelle bemerken wir, dass für $z = x + y\mathrm{i} \in \mathbb{C}$ die Summe der Quadrate $x^2 + y^2$ gerade gleich $z\bar{z}$ ist, denn
+	\[(x + y\mathrm{i})(x - y\mathrm{i}) = x^2 + y^2 + (xy -xy)\mathrm{i} = x^2 + y^2\]
+	Somit gilt für alle $z \in \mathbb{C}$ 
+	\[|z| = z\bar{z}\]
+\end{definition}
+
+\subsubsection{Eigenschaften des Absolutbetrags auf $\mathbb{C}$}
+	\begin{enumerate}
+		\item{(Definitheit)} $\forall z \in \mathbb{C}: |z| \geq 0 \wedge |z| = 0 \iff z = 0$
+		\item{(Multiplikativität)} $\forall z, w \in \mathbb{C} : |zw| = |z||w|$
+		\item{(Dreiecksgleichung)} $\forall z, w \in \mathbb{C} : |z + w| \leq |z| + |w|$
+		\item{(Umgekehrte Dreiecksgleichung)} $\forall z, w \in \mathbb{C} : \big||z| - |w|\big| \leq |z - w|$
+	\end{enumerate}
+	
+	\textbf{*** Hier muss Beweis sein ****}
+
+\begin{definition}{(Offene Bälle)}
+	Der \textbf{offene Ball} mit Radius $r > 0$ um einen Punkt $z \in \mathbb{C}$ ist die Menge
+	\[B_r(z) = \{w \in \mathbb{C}\big| |z - w| < r\}\]
+	Der offene Ball $B_r(z)$ zu $r > 0$ und $z \in \mathbb{C}$ besteht also aus jeden Punkten, die Abstand (strikt) kleiner als $r$ von $z$ haben. Offene Bälle in $\mathbb{C}$ und offene Intervalle in $\mathbb{R}$ sind in folgendem Sinne kompatibelt: Ist $x \in \mathbb{R}$ und $r > 0$, so ist der Schnitt des offenes Balles $B_r(z) \in \mathbb{C}$ mit $\mathbb{R}$ gerade das offene, symmetrisch um $x$ liegende Itervall $(x - r, x + r)$. 
+	
+	\includesvg{../images/balls}
+\end{definition}
+
+	
+
+\begin{definition}{(Offene und abgeschlossene Teilmanege von $\mathbb{C}$)}
+	Eine Teilmenge $U \subseteq \mathbb{C}$ heisst $offen$ (in $\mathbb{C}$), wenn zu jedem Punkt in $U$ ein offene Ball um diesen Punkt exestiert, der in $U$ enthalten ist. Formaler:
+	\[\forall z \in U \exists r > 0 : B_r(z) \subseteq U\]
+	Eine Teilmenge $A \subseteq \mathbb{C}$ heisst \textbf{abgeschlossen} (in $\mathbb{C}$), falls ihr Komplement $\mathbb{C} \setminus A$ offen ist.
+\end{definition}
+
 \end{document}

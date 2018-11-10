@@ -1,0 +1,86 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+ 
+\subsection{Maximum und Minimum}
+
+\begin{definition}{(Maximum)}
+	Wir sagen, dass $x_0 = \max(X) \in \mathbb{R}$ das \textbf{Maximum} einer Teilmenge $X \subseteq \mathbb{R}$ ist, falls $\forall x \in X: x \leq x_0$.
+	
+	Das Maximum einer Teilmenge $X \subseteq \mathbb{R}$ ist eindeutig bestimmt. Denn falls $x_0, x_0'$ beide die Eigenschaften eines Maximums erfüllen, so folgt $x_0 \leq x_0'$ (weil $x_0 \in X$ und $x_0'$ ein Maximum ist) und $x_0' \leq x_0$ (weil $x_0' \in X$ und $x_0$ ein Maximum ist) und damit $x_0 = x_0'$
+	
+	Ein abgeschlossenes Intervall $[a, b]$ mit Endpunkte $a < b$ in $\mathbb{R}$ hat $b = max([a, b])$ als Maximum. Auch nicht-leere endliche Teilmengen und viele weitere Mengen besitzen ein Maximum. Es gibt jedoch auch Mengen, die kein Maximum bestizt. Beispielweise hat das offene Intervall $(a, b)$ mit Endpunkte $a < b$ in $\mathbb{R}$ kein Maximum.
+	
+	\textbf{*** Hier muss Beweis sein***}
+	
+	Des Weiteren kann $\mathbb{R}$ (oder acuh  Intervale der Form $[a, +\infty), (a, +\infty)$ für $a \in \mathbb{R}$) kein Maximum besitzen, da für beliebige $x \in \mathbb{R}$ die Ungleichung $x < x + 1$ gilt und damit $x$ kein Maximum sein kann. 
+\end{definition}
+
+\begin{definition}{(Minimum)}
+	Wir sagen, dass $x_0 = \min(X)$ das \textbf{Minimum} einer Teilmenge $X \subseteq \mathbb{R}$ ist, falls $\forall x \in X: x \geq x_0$.
+	
+	Die obige Diskussion lässt sich auf analoge Weise für das Minimum anwenden. Dieses ist also eindeutig bestimmt, muss aber nicht unbedingt existieren.
+\end{definition}
+
+
+\subsection{Supremum und Infimum}
+
+\begin{definition}{(Beschränkheit und Schranken)}
+	Eine Teilemenge $X \subseteq \mathbb{R}$ heisst \textbf{von oben beschränkt}, falls es ein $s \in \mathbb{R}$ gibt mit $x \leq s$ für alle $x \in X$. Ein solches $s \in \mathbb{R}$ nennt man in diesem Fall eine \textbf{obere Schranke} von $X$. Die Begriffe "\textbf{von unter beschränkt}" und "\textbf{untere Schranke}" sind analog definiert. Eine Teilmenge $X \subseteq \mathbb{R}$ heisst \textbf{beschränkt}, falls sie von oben und von unter beschränkt ist.
+\end{definition}
+
+\begin{proposition}{(Supremum)}
+	Sei $X \subseteq \mathbb{R}$ eine von oben beschränkte, nicht-leere Teilmenge. Dann gibt es eine \textbf{kleinste obere Schranke} von $X$, die auch das \textbf{Supremum} $\sup (X)$ gennant wird. Formal gelten also für $s_0 = \sup(X)$ folgende Eigenschaften:
+	\begin{enumerate}
+		\item{($s_0$ ist eine obere Scharnke)} $\forall x \in X : x \leq s_0$
+		\item{($s_0$ ist kleiner gleich jeder oberen Schranke)} $\forall s \in \mathbb{R}: ((\forall x \in X: x \leq s) \implies s_0 \leq s)$
+	\end{enumerate} 
+	Äquivalenterweise kann $s_0 = \sup(X)$ auch durch (1) und die folgende Bedingung definiert werden:
+	\begin{enumerate}[resume]
+		\item{(Kleinere Zahlen sind keine oberen Schranken)}$\forall \varepsilon > 0 \,\exists x \in X : x > s_0 - \varepsilon$
+	\end{enumerate}
+	
+	Ein paar wichtige Bemerkungen dazu:
+	\begin{itemize}
+		\item Falls das Maximum $x_0 = \max(X)$ existiert, dann ist $x_0$ eine obere Schranke von $X$ und ist vielmehr auch die kleinste obere Schranke, also $\max(X) = \sup(X)$. Denn aus $x_0 \in X$ folgt $x_0 \leq s$ für jede obere Schranke $s$ von $X$.
+		\item Wenn das Supremum $\sup(X) \in X$, dann ist $\sup(X) = \max(X)$, da das Supremum eine obere Schranke ist. Also ist das Supremum eine  Verallgemeinerung des Maximums einer Menge.
+		\item Die Formulierung "kleinste obere Schranke" ist natürlich ein Synonym für das Minimum der oberen Schranken und ist dadurch eindeutig bestimmt, falls es existiert.
+	\end{itemize}
+\end{proposition}
+
+\begin{proof}
+	Nach Annahme ist $X$ nicht-leer und die Menge der oberen Schranken $Y = \{s \in \mathbb{R} | \forall x \in X: x \leq s\}$ ist ebenfalls nict-leer. Das Weiteren gilt für alle $x \in X, s \in Y$, die Ungleichung $x \leq s$. Nach dem Vollständigkeitsaxiom folg daher, dass es $\forall x \in X, s \in Y \, \exists c \in \mathbb{R}: x \leq c \leq s$. Aus der ersten Unglecihung folgt, dass $c$ eine obere Schranke von $X$ ist. Aus der zweiten Unglecihung folgt, dass $c$ kleinste obere Schranke von $X$ ist, und daher erfüllt $c$ sowohl (1) als auch (2).
+	
+	Wir zeigen nun, dass das Supremum auch durch (1) und (3) charakterisiert wird. Also angenommen $s_0 = \sup(X)$ und $\varepsilon > 0$, dann ist $s_0 - \varepsilon < s_0$. Daher kann $s_0 - \varepsilon$ keine obere Schranke sein und $\exists x \in X: x > s_0 - \varepsilon$. Daher erfüllt $s_0$ auch (3).
+	
+	Erfüllt $t_0 \in \mathbb {R}$ nun (1) und (3), so ist $t_0$ eine obere Schranke und daher ist $s_0 \leq t_0$ nach Definition von $s_0 = \sup (X)$. Falls $s_0 < t_0$ wäre, dann wäre $s_0 = t_0 - \varepsilon$ für ein $\varepsilon > 0$. Nach der zweiten Eigenschaft von $t_0$ gäbe es ein $x \in X$ mit $x>s_0$, was der Definition von $s_0$ als (kleinste) obere Schranke widerspricht. Deswegen muss $t_0 = s_0$ gelten und $s_0$ ist eindeutig durch die Bedingungen (1) und (3) bestimmt.  
+\end{proof}
+
+\begin{proposition}{(Supremum unter Streckung)}
+	Sei $A \subseteq \mathbb{R}$ eine nicht-leere, nach oben beschränkte Teilmenge und sei $c > 0$. Dann ist $cA$ nach oben beschränkt und es gilt
+	
+	\[\sup(cA) = c \sup(A)\]
+\end{proposition}
+
+\begin{proof}
+	Sei $s = \sup(A)$. Dann gitl $\forall a \in A, c > 0 : a \leq s \implies ca \leq cs$. Da aber jedes Element von $cA$ von der Form $ca$ für ein $a \in A$ ist. erhalten wir, dass $cs$ eine obere Schranke von $cA$ ist und dass $cA$ nach oben beschränkt ist.
+	
+	Sei $\varepsilon > 0$. Dann $\exists a \in A: a > s - \frac{e}{c}$, für welches die Ungleichung $ca > cs -\varepsilon$ gilt. Dies zeigt die zweite charakterisierende Eigenschaft des Supremums und wir erhalten $\sup (cA) = cs=c \sup (A)$.
+\end{proof}
+
+\begin{proposition}{(Supremum unter Summen)}
+	Seien $A,B\subseteq \mathbb {R}$ zwei nicht-leere, von oben beschränkte Teilmengen von $\mathbb {R}$. Dann ist $A+B$ von oben beschränkt und es gilt 
+	\[\sup(A+B) = \sup(A) + \sup(B)\]
+\end{proposition}
+
+\begin{proof}
+	Wir definiere $s_A = \sup(A)$ und $s_B = \sup(B)$. Dann gilt $\forall a \in A: a \leq s_A$ und $\forall b in B: b \leq s_B$, was $\forall a \in A, b \in B: a + b \leq s_A + s_B$ impliziert. Da aber jedes Element von $A + B$ dieser Form ist, erhalten wir, dass $s_A + s_B$ eine obere schranke von $A + B$ ist und dass $A + B$ nach oben beschränkt ist.
+	
+	Sei $\varepsilon >0$. Dann existiert ein $a\in A$ mit $a > s_A - \frac {\varepsilon }{2}$ und ein $b\in B$ mit $b > s_B - \frac {\varepsilon }{2}$, was wiederum $a+b > s_A+s_B-\varepsilon$ impliziert. Dies zeigt die zweite charakterisierende Eigenschaft von $\sup (A+B)$ und wir erhalten 
+	\[\sup(A + B) = s_A + s_B = \sup(A) + \sup(B)\]
+\end{proof}
+
+
+\subsection{Uneigentliche Werte, Suprema und Infime}
+
+\subsection{Verwendung des Supremums und Infimums}
+\end{document}

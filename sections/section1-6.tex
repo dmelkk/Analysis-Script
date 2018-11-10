@@ -1,0 +1,71 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\subsection{Der Archimedische Prinzip}
+
+Mit Hilfe der Existenz des Supremums können wir nun das Archimedische Prinzip beweisen.
+
+\begin{proposition}{(Das Archimedische Prinzip}
+	Es gelten folgende Aussagen: 
+	\begin{enumerate}
+		\item Jede nicht-leere, von oben beschränkte Teilmenge von $\mathbb{Z}$ hat ein Maximum.
+		\item $\forall x \in \mathbb{R} \, \exists! n \in \mathbb{Z} : n \leq x \leq n + 1$
+		\item $\forall \varepsilon > 0 \, \exists n \in \mathbb{N}: \frac{1}{n} < \varepsilon$.
+	\end{enumerate}
+\end{proposition}
+
+Wir können das Archimedische Prinzip beispielsweise verwenden, um folgende Funktionen zu definieren. 
+\begin{itemize}
+	\item Der \textbf{ganzzahlige Anteil} $\lfloor {x} \rfloor$ einer Zahl $x\in \mathbb {R}$ ist die eindeutig bestimmte ganze Zahl $n\in \mathbb {Z}$ mit $n \leq x < n+1$. Wir erhalten also die Funktion $x \in \mathbb {R} \mapsto \lfloor {x} \rfloor \in \mathbb {Z}$, die auch \textbf{Abrundungsfunktion} genannt wird. 
+	\item Der \textbf{gebrochene Anteil} (oder auch \textbf{Nachkommaanteil}) ist $\left \lbrace {x} \right \rbrace = x - \lfloor {x} \rfloor \in [0,1)$ und wir erhalten eine Funktion $x \in \mathbb {R} \mapsto \left \lbrace {x} \right \rbrace \in [0,1)$ mit $x=\lfloor {x} \rfloor +\left \lbrace {x} \right \rbrace$ für alle $x\in \mathbb {R}$.
+\end{itemize}
+
+\begin{proof}
+	Zu (i): Sei $E \subseteq \mathbb {Z}$ eine nicht-leere und (als Teilmenge von $\mathbb {R}$) von oben beschränkte Teilmenge. Dann existiert das Supremum $s_0 = \sup (E)$ (nach Definition von Supremum). Da $s_0$ die kleinste obere Schranke von $E$ ist, $\exists n_0 \in E : s_0-1 < n_0 \leq s_0$. Es folgt $s_0 < n_0 +1$ und $\forall m \in E : m \leq s_0 < n_0 +1$, woraus $m \leq n_0$ folgt. Daher ist $n_0$ das Maximum von $E$ wie in (i) behauptet.
+	
+	Zu (ii): Sei $x \geq 0$ eine reelle Zahl. Dann ist $E = \left \lbrace {n \in \mathbb {Z}} \mid {n \leq x}\right \rbrace$ eine von oben beschränkte, nicht-leere Teilmenge von $\mathbb {Z}$ (nicht-leer, da $0 \in E$ — hier verwenden wir $x\geq 0$). Nach obigem hat $E$ ein Maximum, das heisst, es gibt ein maximales $n \in \mathbb {Z}$ mit $n \leq x$. Daraus folgt $x < n+1$ wie in (ii).
+	
+	Falls $x < 0$ ist, dann können wir obigen Fall auf $-x$ anwenden und finden ein $\ell \in \mathbb {Z}$ mit $\ell \leq -x < \ell +1$. Daraus folgt, dass es auch ein $k \in \left \lbrace {\ell ,\ell +1} \right \rbrace \subseteq \mathbb {Z}$ mit $k-1 < -x \leq k$ gibt. Für $n = -k \in \mathbb {Z}$ erhalten wir schliesslich $n \leq x < n+1$. Damit ist die Existenz in (ii) bewiesen.
+	
+	Für den Beweis der Eindeutigkeit nehmen wir an, dass $n_1,n_2\in \mathbb {Z}$ die Ungleichungen $n_1 \leq x < n_1+1$ und $n_2 \leq x < n_2+1$ gelten. Daraus folgt $n_1 \leq x < n_2+1$ und damit $n_1 \leq n_2$. Analog folgt $n_2 \leq n_1$, was $n_1 = n_2$ impliziert.
+	
+	Zu (iii): Sei $\varepsilon > 0$ eine reelle Zahl. Dann gilt auch $\frac {1}{\varepsilon }>0$ und es gibt nach Teil (ii) ein $n \in \mathbb {N}$ mit $\frac {1}{\varepsilon }<n$. Für dieses $n$ gilt aber auch $\frac {1}{n} < \varepsilon$, wie in (iii) behauptet wurde.
+\end{proof}
+
+\begin{corollary}{(Dichtheit von $\mathbb{Q}$ in $\mathbb{R}$)}
+	Zwischen je zwei reellen Zahlen $a,b\in \mathbb {R}$ mit $a < b$ gibt es ein $r\in \mathbb {Q}$ mit $a < r < b$. 
+\end{corollary}
+
+\begin{proof}
+	Nach dem Archimedischen Prinzip existiert ein $m \in \mathbb {N}$ mit $\frac {1}{m} < b-a$. Ebenso gibt es nach dem Archimedischen Prinzip ein $n \in \mathbb {Z}$ mit $n-1 \leq ma < n$ oder äquivalenterweise $\frac {n-1}{m}\leq a < \frac {n}{m}$. Insbesondere gilt $\frac {n}{m} \leq a + \frac {1}{m}$, was mit $\frac {1}{m} < b-a$ gerade
+	\[\begin{aligned}[]
+		a < \frac {n}{m} \leq a + \frac {1}{m} < a + b-a = b
+	\end{aligned}\]
+und damit das Korollar impliziert, wobei $r = \frac {n}{m}$ gewählt wird. 
+\end{proof}
+
+Anders formuliert zeigt obiges Korollar, dass $\mathbb {Q}$ jede Umgebung $I$ einer reellen Zahl schneidet (das heisst, $I \cap \mathbb {Q} \neq \emptyset)$, oder auch, dass wir jede reelle Zahl beliebig genau durch rationale Zahlen approximieren können. Die Eigenschaft wird auch als $\mathbb {Q}$ ist dicht in $\mathbb {R}$ bezeichnet
+
+\subsection{Häufungspunkte einer Menge}
+
+\begin{definition}{(Häufungspunkte von Menge)}
+	Sei $A \subseteq \mathbb{R}$. Wir sagen, dass $x_0$ ein \textbf{Häufungspunkte der Menge} $A$ ist, falls $\forall \varepsilon > 0 \, \exists a \in A: 0 < |a - x_0| < \varepsilon$. 
+\end{definition}
+
+\begin{proposition}{(Existenz von Häufungspunkten)}
+	Sei $A\subseteq \mathbb {R}$ eine beschränkte unendliche Teilmenge. Dann existiert ein Häufungspunkt von $A$ in $\mathbb {R}$. 
+\end{proposition}
+
+\def\svgwidth{\columnwidth}
+\includesvg{../images/hpunkte}
+
+\begin{proof}
+\end{proof}
+
+\subsection{Intervallschachtelungsprinzip}
+
+\subsection{Überzählbarkeit}
+
+\subsection{Die Cantor-Menge}
+
+\end{document}

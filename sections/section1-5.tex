@@ -1,7 +1,7 @@
 \documentclass[../Analysis1_script.tex]{subfiles}
 \begin{document}
  
-\subsection{Maximum und Minimum}
+\subsection{Maximum und Minimum}\label{mns:max_n_min}
 
 \begin{definition}{(Maximum)}
 	Wir sagen, dass $x_0 = \max(X) \in \mathbb{R}$ das \textbf{Maximum} einer Teilmenge $X \subseteq \mathbb{R}$ ist, falls $\forall x \in X: x \leq x_0$.
@@ -12,7 +12,7 @@
 	
 	\textbf{*** Hier muss Beweis sein***}
 	
-	Des Weiteren kann $\mathbb{R}$ (oder acuh  Intervale der Form $[a, +\infty), (a, +\infty)$ für $a \in \mathbb{R}$) kein Maximum besitzen, da für beliebige $x \in \mathbb{R}$ die Ungleichung $x < x + 1$ gilt und damit $x$ kein Maximum sein kann. 
+	Des Weiteren kann $\mathbb{R}$ (oder acuh  Intervale der Form $[a, \infty), (a, \infty)$ für $a \in \mathbb{R}$) kein Maximum besitzen, da für beliebige $x \in \mathbb{R}$ die Ungleichung $x < x + 1$ gilt und damit $x$ kein Maximum sein kann. 
 \end{definition}
 
 \begin{definition}{(Minimum)}
@@ -22,7 +22,7 @@
 \end{definition}
 
 
-\subsection{Supremum und Infimum}
+\subsection{Supremum und Infimum}\label{mns:sup_n_inf}
 
 \begin{definition}{(Beschränkheit und Schranken)}
 	Eine Teilemenge $X \subseteq \mathbb{R}$ heisst \textbf{von oben beschränkt}, falls es ein $s \in \mathbb{R}$ gibt mit $x \leq s$ für alle $x \in X$. Ein solches $s \in \mathbb{R}$ nennt man in diesem Fall eine \textbf{obere Schranke} von $X$. Die Begriffe "\textbf{von unter beschränkt}" und "\textbf{untere Schranke}" sind analog definiert. Eine Teilmenge $X \subseteq \mathbb{R}$ heisst \textbf{beschränkt}, falls sie von oben und von unter beschränkt ist.
@@ -82,5 +82,33 @@
 
 \subsection{Uneigentliche Werte, Suprema und Infime}
 
+In diesem Abschnitt wollen wir die Begrieffe "Infimum" und "Supremum" auf belibiege Teilmenge von $\mathbb{R}$ erweitern (ohne die in Abschnitt \ref{mns:sup_n_inf} getroffenen Annahmen). Dazu verwenden wir die Symbole "$+\infty$" und "$-\infty$", die keine reellen Zahlen darstellen. Wir definieren die \textbf{erweiterte Zahlengerade} (die auch \textbf{Zweipunktkompaktifizierung} von $\mathbb{R}$ genannt wird) durch 
+\[\bar{\mathbb{R}} = \mathbb{R} \sqcup \{-\infty, +\infty\} \]
+und stellen uns diese als die Zahlengerade
+
+\def\svgwidth{\columnwidth}
+\includesvg{../images/uneig_sup}
+vor. Hier haben wir den Punkt $-\infty$ links von $\mathbb{R}$ und den Punkt $+\infty$ rechts von $\mathbb{R}$ zu der Gerade hinzugefügt. Froramler fromuliert: wir erweitern Relation (Ordnung) $\leq$ auf $\bar{\mathbb{R}}$, so dass $\forall x \in \bar{\mathbb{R}}: -\infty \leq x \leq +\infty$ gilt, aber keine weiteren $\leq$-Relation für die Symbole $-\infty, +\infty$ erfüllt sin. Insbesondere schreiben wir auch $-\infty < x < +\infty$ für alle $x \in \mathbb{R}$.
+
+Das Maximum und das Minimum einer Teilmenge $X \subseteq \overline {\mathbb {R}}$ ist nun wie in Abschnitt \ref{mns:max_n_min} definiert (falls es existiert).
+
+Falls $X \subseteq \mathbb {R}$ nicht von oben beschränkt ist, dann definieren wir $\sup (X) = +\infty$. Falls $X$ leer ist, setzen wir $\sup (\emptyset ) = -\infty$ (da jedes $x \in \mathbb {R}$ eine obere Schranke von $\emptyset$ darstellt). Analog definieren wir $\inf (\emptyset ) = +\infty$ und $\inf (X) = -\infty$, falls $X\subseteq \mathbb {R}$ nicht von unten beschränkt ist.
+
+Weiter definieren wir für die Übungen die "Rechenregeln"
+\[\begin{aligned}[]
+\begin{array}{cc} \infty +x=x+\infty =\infty \quad & -\infty +x=x-\infty =-\infty \\ \infty +\infty =\infty & -\infty -\infty =-\infty 
+\end{array}
+\end{aligned}\]
+
+für alle $x\in \mathbb {R}$ und
+\[\begin{aligned}[]
+\begin{array}{cc} \infty \cdot \infty =\infty & (-\infty )\cdot \infty =-\infty \\ y\cdot \infty =\infty \cdot y=\infty & (-y)\cdot \infty = \infty \cdot (-y)=-\infty \\ \infty \cdot (-\infty )=-\infty & (-\infty )\cdot (-\infty )=\infty \\ y\cdot (-\infty )=(-\infty )\cdot y=-\infty \quad & (-y)\cdot (-\infty )=(-\infty )\cdot (-y)=\infty 
+\end{array}
+\end{aligned}\]
+
+für alle $y>0$, wovon wir einen Teil verwenden werden. Die Ausdrücke $\infty -\infty$ und $0\cdot \infty$ oder ähnliche bleiben wohlgemerkt aber undefiniert.
+
 \subsection{Verwendung des Supremums und Infimums}
+
+Das Supremum ist eine natürliche und notwendige Verallgemeinerung des Maximums einer Menge, da letzteres sogar für beschränkte Intervalle nicht existieren muss. Das Supremum kann aber auch hilfreich sein in Situationen, wo das Maximum existiert. Denn falls man beweisen will, dass ein Maximum existiert, dann hat man mit dem Supremum den richtigen Kandidaten und kann den Beweis mit der Existenz des Supremums beginnen. Auf die gleiche Weise ist das Infimum einer Menge eine Verallgemeinerung des Minimums.
 \end{document}

@@ -60,12 +60,59 @@ Anders formuliert zeigt obiges Korollar, dass $\mathbb {Q}$ jede Umgebung $I$ ei
 \includesvg{../images/hpunkte}
 
 \begin{proof}
+	Angennomen $m, M \in \mathbb{R}$ erfüllen $A \subseteq [m, M]$. Wir definieren
+	\[X = \{ x \in \mathbb{R} \big| |A \cap (-\infty, x]| < \infty\}\]
+	Dann ist $m \in X$ da $|A \cap (-\infty, m]| \leq 1$. Des Weiteren gilt $x < M$ für jedes $x \in X$, denn für $x \geq M$ ist $A \cap (-\infty, x] = A \cap (-\infty, M] = A$ eine unendliche Menge nahc Annahme im Stazt. Daher ist $X$ eine beschränkte, nicht-leere Teilmenge von $\mathbb{R}$, womit das Supremum $x_0 = \sup(X)$ existiert.
+	
+	Sei nun $\varepsilon > 0$. Dann existiert ein $x \in X$ mit $x > x_0 - \varepsilon$, was zeigt, dass $A \cap (-\infty, x_0 - \varepsilon]$ eine endliche Menge ist, da
+	\[A \cap (-\infty, x_0 - \varepsilon] \subseteq A \cap (-\infty, x]\]
+	gilt. Des weiteren gilt $x_0 + \varepsilon \notin X$ auf Grund der Definition von $x_0$. Damit ist Kardinalität von $A \cap (-\infty, x + \varepsilon]$ unendlich. Es folgt, dass 
+	\[A \cap (x_0 - \varepsilon, x_0 + \varepsilon] = (A \cap (-\infty, x_0 + \varepsilon]) \setminus (A \cap (-\infty, x_0 - \varepsilon])\]
+	eine unendliche Menge ist und abgesehen von möglicherweise $x_0, x_0 + \varepsilon$ noch weitere Punkte besitzen muss. Da $\varepsilon > 0$ belibieg war, sehen wir, dass $x_0$ ein Häufungspunkt der Menge $A$ ist.
 \end{proof}
 
 \subsection{Intervallschachtelungsprinzip}
 
+Der Durchschnitt von ineinander geschachtelten, nicht-leeren Intervallen, das heisst, Intervallen $I_1 \supseteq I_2 \supseteq I_3\subseteq \cdots$ in $\mathbb {R}$, die kleiner werden, muss nicht unbedingt nicht-leer sein. Zum Beispiel gilt
+\[\begin{aligned}[]
+	\bigcap _{n=1}^\infty \big [n,\infty \big ) & = \emptyset , \\ \bigcap _{n=1}^\infty \bigg (0 , \frac {1}{n}\bigg ) & = \emptyset
+\end{aligned}\]
+
+auf Grund des Archimedischen Prinzip. Für abgeschlossene und beschränkte Intervalle ist die Situation aber deutlich besser. Dies ist nochmals eine Konsequenz des Vollständig­keitsaxioms.
+
+\begin{proposition}{(Intervallschachtelungsprinzip)}
+	Sei für jedes $n \in \mathbb{N}$ ein nicht-leeres, abgeschlossenes, beschränktes Intervall $I_n = [a_n, b_n]$ gegeben, so dass für alle natürlichen Zahlen $m \leq n$ die Inklusion $I_m \supseteq I_n$ oder äquivalenzerweise die Ungleichungen $a_m \leq a_n \leq b_n \leq b_m$ gelten. Dann ist die Durchschnitt
+	\[\begin{aligned}[]
+		\bigcap _{n=1}^\infty I_n = \big [\sup \left \lbrace {a_n} \mid {n\in \mathbb {N}}\right \rbrace ,\inf \left \lbrace {b_n} \mid {n\in \mathbb {N}}\right \rbrace \big ]
+	\end{aligned}\]
+	nicht-leer.   
+\end{proposition}
+
+\begin{proof}
+	Nach Annahme gilt für natüurlichen Zahlen $\ell, m, n$ mit $\ell \leq m \leq n$ die Ungleichung
+	\[a_{\ell} \leq a_m \leq a_n \leq b_n \leq b_m \leq b_{\ell}\]
+	Insbesondere ist $b_m$ eine obere Schranke von $\{a_k | k \in \mathbb{N}\}$, woraus
+	\[\sup\{a_k | k \in \mathbb{N}\} = b_m\]
+	folgt. Da $m$ bilibieg war, sehen wir nun, dass $\bar{a} = \sup\{a_k | k \in \mathbb{N}\} \in \mathbb{R}$ eine untere Schrank von $\{b_m | m \in \mathbb{N}\}$ ist. Daher hat die letztere Menge ein Infimum $\bar{b} \in \mathbb{R}$ und wir erhalten 
+	\[\begin{aligned}[]
+		\overline {a} = \sup \left \lbrace {a_k} \mid {k\in \mathbb {N}}\right \rbrace \leq \inf \left \lbrace {b_m} \mid {m\in \mathbb {N}}\right \rbrace = \overline {b}.
+	\end{aligned}\]
+	Insbesondere ist der Schnitt $\bigcap _{n=1}^\infty I_n$ nicht-leer, da er zum Beispiel $\bar{a}$ enthält. Für $x \in \mathbb{R}$ gilt nun die Abfolge von Äquivalenzen 
+	\[\begin{aligned}[]
+		x \in \bigcap _{n=1}^\infty [a_n,b_n] &\iff \forall n\in \mathbb {N}: a_n \leq x \leq b_n\\ &\iff \big (\forall n\in \mathbb {N}: a_n\leq x\big ) \wedge \big (\forall n\in \mathbb {N}: x \leq b_n\big )\\ &\iff \overline {a} \leq x \wedge x \leq \overline {b},
+	\end{aligned}\]
+	womit $\bigcap _{n=1}^\infty [a_n,b_n] = [\bar {a},\bar {b}]$ gilt und der Satz folgt. 
+\end{proof}
+
 \subsection{Überzählbarkeit}
 
+\begin{corollary}{(Überabzählbarkeit von $\mathbb{R}$)}
+	Die Teilmenge $[0,1]\subseteq \mathbb {R}$ (und daher auch $\mathbb {R}$) ist überabzählbar. 
+\end{corollary}
+
+\begin{proof}
+	\textbf{*** Hier muss Beweis sein ***}
+\end{proof}
 \subsection{Die Cantor-Menge}
 
 \end{document}

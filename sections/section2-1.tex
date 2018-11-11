@@ -1,0 +1,44 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+Sei $n \in \mathbb {N}$ und seien $a_1,\ldots ,a_n \in \mathbb {C}$ oder $a_1,\ldots ,a_n$ Elemente eines Vektorraums $V$ (wie zum Beispiel $\mathbb {R}^d$ für ein $d \geq 1$). Wir wollen hier für eine natürliche Zahl $n\in \mathbb {N}$ die Summe von $a_1$ bis $a_n$, also
+\[\begin{aligned}[]
+	\sum _{j=1}^n a_j = a_1+\ldots +a_n,
+\end{aligned}\]
+besprechen und formal korrekt definieren.
+
+Vom formalen Standpunkt her gesehen ist $j \mapsto a_j\in V$ eine Funktion, (die oft auch durch eine konkrete Formel gegeben sein wird und) deren Definitionsbereich die Menge
+\[\begin{aligned}[]
+	\left \lbrace {j \in \mathbb {N}} \mid {1 \leq j \leq n}\right \rbrace
+\end{aligned}\]
+enthalten muss. Wir können $\sum _{i=1}^n a_j$ rekursiv definieren durch
+\[\begin{aligned}[]
+	\sum _{j=1}^1 a_j = a_1\text { und } \sum _{j=1}^{k+1} a_j = \bigg (\sum _{j=1}^{k} a_j\bigg ) + a_{k+1}
+\end{aligned}\]
+für $k \in \left \lbrace {1,\ldots ,n-1} \right \rbrace$. Diese Definition entspricht einem einfachen rekursiven Algorithmus, um die Summe $\sum _{i=1}^n a_j$ zu berechnen. Allgemeiner ist die Summe $\sum _{i=m}^n a_j$ für ganze Zahlen $m,n$ ebenso rekursiv durch
+\[\begin{aligned}[]
+	\sum _{j=m}^na_j=\begin{cases}
+		0 &\text {falls }m>n,\\ 
+		a_m &\text {falls }m=n\text { und}\\ 
+		\big (\sum _{j=m}^{n-1} a_j\big ) + a_{n}&\text {falls }m<n
+	\end{cases}
+\end{aligned}\]
+definiert. Wir werden $a_j$ als die \textbf{Summanden} und $j$ als den \textbf{Index} der Summe $\sum _{j=1}^n a_j$ bezeichnen.  
+
+Falls nun $m,n$ ganze Zahlen und $a_m,\ldots ,a_n \in \mathbb {C}$ sind, dann können wir auch das \textbf{Produkt} $\prod _{j=m}^n a_j$ von $a_m$ bis $a_n$ rekursiv durch
+\[\begin{aligned}[]
+	\prod _{j=m}^na_j=\begin{cases}
+		1 &\text {falls }m>n,\\ 
+		a_m &\text {falls }m=n\text { und}\\ 
+		\big (\prod _{j=m}^{n-1} a_j\big ) \cdot a_{n}&\text {falls }m<n
+	\end{cases}
+\end{aligned}\]
+definieren. Wir werden $a_j$ als die \textbf{Faktoren} und $j$ als den \textbf{Index} des Produkts $\prod _{j=m}^n a_j$ bezeichnen. 
+
+
+\subsection{Rechenregeln für die Summe}
+
+\subsection{Rechenregeln für die Produkt}
+
+\subsection{Die geometrische Summe}
+\end{document}

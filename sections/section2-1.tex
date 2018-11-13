@@ -38,7 +38,78 @@ definieren. Wir werden $a_j$ als die \textbf{Faktoren} und $j$ als den \textbf{I
 
 \subsection{Rechenregeln für die Summe}
 
+Die Summe erfüllt für gegebene ganze Zahlen $m,n$ mit $m \leq n$ die Gleichungen
+\[\begin{aligned}[]
+	\sum _{k=m}^n(a_k+b_k) = \sum _{k=m}^na_k + \sum _{k=m}^nb_k
+\end{aligned}\]
+und
+\[\begin{aligned}[]
+	\sum _{k=m}^n(ca_k) = c \sum _{k=m}^na_k,
+\end{aligned}\] 
+wobei $a_m,\ldots ,a_n, b_m,\ldots ,b_n$ in einem reellen (respektive komplexen) Vektorraum $V$ liegen und $c\in \mathbb {R}$ (respektive $c\in \mathbb {C}$) ein Skalar ist. (Die erste Eigenschaft ist eine Mischung aus Assoziativgesetz und Kommutativgesetz für die Addition, und die zweite Eigenschaft ist eine Verallgemeinerung des Distributivgesetzes.)
+
+Diese beiden Eigenschaften (die Summe wird auf die Summe und das skalare Vielfache auf das skalare Vielfache abgebildet) werden auch als \textbf{Linearität der Abbildung} $\sum$ bezeichnet, wobei $\sum$ auf dem Vektorraum $V^{\{ m,\ldots ,n\} }$ der Funktionen von $\{ m,\ldots ,n\}$ nach $V$ definiert ist, den Vektorraum V als Zielbereich besitzt, und $(a_m,\ldots ,a_n)\in V^{\{ m,\ldots ,n\} }$ auf $\sum _{k=m}^na_k$ abbildet. Wie der Name sagt, wird Linearität ausführlicher in der Linearen Algebra besprochen. Es handelt sich dabei aber auch um eine wichtige Eigenschaft für die Analysis, welche also häufig auftreten.
+
+Des Weiteren gilt die Formel für die \textbf{Teleskopsumme}
+\[\begin{aligned}[]
+	\sum _{k=m}^n(a_{k+1}-a_k) &= (a_{m+1}-a_m) + (a_{m+2}-a_{m+1})+\ldots + (a_n-a_{n-1})+(a_{n+1}-a_n)\\ 
+	&= a_{n+1}-a_m
+\end{aligned}\] 
+wobei $a_m,\ldots ,a_{n+1}$ in einem reellen oder einem komplexen Vektorraum liegen. Formaler argumentiert gilt
+\[\begin{aligned}[]
+	\sum _{k=m}^n(a_{k+1}-a_k) &= \sum _{k=m}^na_{k+1}-\sum _{k=m}^na_k = \sum _{j=m+1}^{n+1}a_j - \sum _{k=m}^n a_k\\ 
+	&= \Bigg (a_{n+1}+ \sum _{j=m+1}^na_j\Bigg ) - \Bigg (a_m + \sum _{k=m+1}^na_k\Bigg ) = a_{n+1}-a_m
+\end{aligned}\] 
+wie bereits behauptet. Die Formel für die Teleskopsumme lässt sich zur Abel-Summationsformel verallgemeinern, welche überraschend viele Anwendungen in der Analysis und Zahlentheorie findet.
+
+
 \subsection{Rechenregeln für die Produkt}
 
+Für ganze Zahlen $m \leq n$ und $a_m,\ldots ,a_n,b_m,\ldots ,b_n \in \mathbb {C}$ gilt
+\[\begin{aligned}[]
+	\prod _{k=m}^n (a_kb_k) = \bigg (\prod _{k=m}^n a_k\bigg ) \bigg (\prod _{k=m}^n b_k\bigg ).
+\end{aligned}\]
+Insbesondere ist für alle $c\in \mathbb {C}$
+\[\begin{aligned}[]
+	\prod _{k=m}^n (ca_k) = c^{n-m+1}\bigg (\prod _{k=m}^n a_k\bigg ).
+\end{aligned}\] 
+Des Weiteren gilt für alle $a_m,\ldots ,a_n$ die Formel für das \textbf{Teleskopprodukt}
+\[\begin{aligned}[]
+	\prod _{k=m}^n \frac {a_{k+1}}{a_k} &= \bigg (\prod _{k=m}^n a_{k+1}\bigg )\bigg ( \prod _{k=m}^n \frac {1}{a_k}\bigg ) = \bigg (\prod _{k=m+1}^{n+1} a_{k}\bigg )\bigg ( \prod _{k=m}^n \frac {1}{a_k}\bigg )\\ 
+	&= a_{n+1}\bigg (\prod _{k=m+1}^{n} a_{k}\bigg )\bigg ( \prod _{k=m+1}^n \frac {1}{a_k}\bigg )\frac {1}{a_m} = \frac {a_{n+1}}{a_m}.
+\end{aligned}\]
+
+\begin{lemma}{(Bernoulli'sche Ungleichnug)}
+	Für alle reellen Zahlen $a \geq -1$ und $n \in \mathbb{N}_0$ gilt $(1 + a)^n \geq 1 + na$.
+\end{lemma}
+
+\begin{proof}
+	Wir verwänden vollständige Induktion. Für $n = 0$ haben wir $(1 + a)^n = 1 = 1 + na$. Angenommen die Ungleichung $(1 + a) ^ n \geq 1 + na$ gilt für ein $n \in \mathbb{N}_0$. Nach Annahme an $a$ ist $a \geq -1$, was in Kombination mit Annahme an $n$ 
+	\[\begin{aligned}[]
+		(1 + a)^n &= (1 + a)^n (1 + a) \\
+			&\geq (1 + na)(1 + a) = 1 + na + a + na^2 \\
+			&\geq 1 + (n+1)a
+	\end{aligned}\]
+	ergibt und damit Induktionsschritt zeigt. Das Lemma folgt. 
+\end{proof}
+
 \subsection{Die geometrische Summe}
+\begin{proposition}{(Geometrische Summenformel)}
+	Sei $n \in \mathbb {N}_0$ und $q \in \mathbb {C}$. Dann gilt
+	\[\begin{aligned}[]
+		\sum _{k=0}^n q^k = \left \lbrace 
+		\begin{array}{cc} 
+			n+1 & \text {falls } q=1 \\ 
+			\frac {q^{n+1}-1}{q-1} & \text {falls } q \neq 1
+		\end{array} \right . .
+	\end{aligned}\] 
+\end{proposition}
+Der direkte (aber sicher nicht eleganteste) Beweis verwendet vollständige Induktion:
+\begin{proof}
+	Für $q=1$ ist $q^k=1$ für alle $k\in \mathbb {N}_0$ und die Aussage folgt aus den Eigenschaften der Summe. Sei nun $q\neq 1$. Für $n=0$ gilt $\sum _{k=0}^0 q^k = q^0 = 1 = \frac {q-1}{q-1}$, was also den Induktionsanfang zeigt. Angenommen die Formel in der Proposition gilt bereits für $n$. Dann ist
+	\[\begin{aligned}[]
+		\sum _{k=0}^{n+1} q^k = \sum _{k=0}^n q^k + q^{n+1} = \frac {q^{n+1}-1}{q-1} + q^{n+1} = \frac {q^{n+1}-1}{q-1} + \frac {q^{n+2}-q^{n+1}}{q-1} = \frac {q^{n+2}-1}{q-1},
+	\end{aligned}\]
+	womit der Induktionsschritt gezeigt ist und die Proposition folgt.   
+\end{proof}
 \end{document}

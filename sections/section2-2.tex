@@ -2,6 +2,32 @@
 \begin{document}
 
 
+\begin{definition}{(Polynomfunktionen)}
+	Eine \textbf{Polynomfunktion} auf $\mathbb{C}$ ist ein Funktion der Form
+	\[f : z \in \mathbb{C} \mapsto \sum_{k=0}^n a_k z^k \in \mathbb{C}\]
+	für $n \in \mathbb{N}_0$ und $a_0, \ldots, a_n \in \mathbb{C}$. Die Zahlen $a_0, \ldots, a_n \in \mathbb{C}$ heissen die \textbf{Koeffizienten} von $f$. Das grösste $k \in \{0, \ldots, n\}$ mit $a_k \neq 0$ ist der \textbf{Grad} $\deg(f)$ der Polynomfunktion $f$ und $a_{\deg(f)}$ ist der \textbf{Leitkoeffizient} oder \textbf{führende Koeffizient} von $f$. Falls keine solche $k$ existiert, das heisst, falls $f$ Polynomfunktion $z \in \mathbb{C} \mapsto 0z^0 = 0 \in \mathbb{C}$ ist, so nennt man die Polynomfunktion die \textbf{Null} und setzt den Grad auf $-\infty$. Eine Polynomfunktion der Form $z \in \mathbb{C} \mapsto 0z^0 = 0 \in \mathbb{C}$ für $a_0 \in \mathbb{C}$ wird auch \textbf{konstant} gennant und kurz mit $a_0$ bezeichnet. Eine Polynomfunktion mit Grad $\leq 1$ wird \textbf{affin} oder \textbf{linear} gennant. Eine Polynomfunktion der Form $z \in \mathbb{C} \mapsto a_k z^k \in \mathbb{C}$ für $k \in \mathbb{N}_0$ heisst ein \textbf{Monom}. Wir sagen, dass ein Polynomfunktion \textbf{reell} ist, wenn die Koeffizienten reellt gewählt werden können. Wir werden eine reelle Polynomfunktion auch mit der zugehörigen Funktion von $\mathbb {R}$ nach $\mathbb {R}$ identifizieren. 
+\end{definition}
+
+\begin{definition}{(Polynome)}
+	Sei $\mathbb{K}$ ein beliebiger Körper. Ein \textbf{Polynome} $f$ über $\mathbb{K}$ ist ein formaler Ausdruck der Form $\sum_{k=0}^n a_k T^k$ für $n \in \mathbb{N}_0$ und Koeffizienten $a_0, \ldots, a_n \in \mathbb{K}$. Hierbei ist $T$ ein Symbol, das man auch als \textbf{Variable} bezeichnet und das verwendet wird, um die Koeffizienten von einander zu trennen. Wir schreiben auch $T^1 = T$ und $aT^0 = a$ für alle $a \in \mathbb{K}$. Weiter darf ein Summand der Form $0T^k$ für $k\in \mathbb {N}_0$ aus der Summe entfernt werden. Wir definieren den \textbf{Polynomring} $\mathbb{K}[T]$ als die Menge der Polynome über $\mathbb {K}$ in der Variablen $T$ mit Addition und Multiplikation gegeben und verwenden ebenso die Begriffe Grad, Koeffizient, etc.
+\end{definition}
+
+\begin{example}{(Polynome auf endliche Körpern)}
+	Wir betrachten für den Körper $\mathbb {F}_2$ mit zwei Elementen die Polynomfunktionen 
+	\[\begin{aligned}[]
+		f:a\in \mathbb {F}_2 \mapsto a^3+a+1 \in \mathbb {F}_2,\quad g:a\in \mathbb {F}_2 \mapsto 1 \in \mathbb {F}_2.
+	\end{aligned}\]
+	Bei $0\in \mathbb {F}_2$ gilt $f(0) = 1 = g(0)$ und an der Stelle $1\in \mathbb {F}_2 gilt f(1) = 1+1+1 = 1$ und $g(1) = 1$. Insbesondere gilt $f=g$, obwohl $f$ und $g$ nicht durch die gleichen Koeffizienten gegeben sind. Wir unterscheiden die Polynome $T^3+T+1\in \mathbb {F}_2[T]$ (mit Grad $3$) und $1\in \mathbb {F}_2[T]$ (mit Grad $0$), obwohl die zugehörigen Polynomfunktionen identisch sind (womit es für diese Polynomfunktion keinen wohldefinierten Grad gibt). 
+\end{example}
+
+\begin{proposition}{(Wachstum von Polynomfunktionen und Eindeutigkeit der Koeffizienten)}
+	Sei $f(T) \in \mathbb {C}[T]$ ein nicht-konstantes Polynom. Dann gibt es zu jeder positiven reellen Zahl $M > 0$ eine reelle Zahl $R \geq 1$, so dass für alle $z \in \mathbb {C}$ mit $|z| \geq R$ auch $|f(z)| \geq M$ gilt. Insbesondere ist die Zuordnung, die jedem Polynom $f(T) \in \mathbb {C}[T]$ die zugehörige Polynomfunktion $z \in \mathbb {C} \mapsto f(z) \in \mathbb {C}$ zuweist, bijektiv. Dies gilt analog ebenso für reelle Polynome $f(T)\in \mathbb {R}[T]$ und reelle Polynomfunktionen $x\in \mathbb {R}\mapsto f(x)\in \mathbb {R}$
+\end{proposition}
+
+\begin{proof}
+\textbf{*** hier muss Beweis sein ***}
+\end{proof}
+
 \subsection{Polynomdivision}
 
 \subsection{Nullstellen und Interpolation}

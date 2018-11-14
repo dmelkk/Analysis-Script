@@ -50,9 +50,22 @@
 	Wie wir gesehen haben, existiert auf $\mathbb {N}$ eine Division von $n$ durch $d$ mit Rest gegeben durch $n=qd+r$. Dabei ist der Rest $r$ strikt kleiner (bezüglich $\leq$) als $d$. Division mit Rest gibt es auch für Polynome. Hier hat der Rest bei der Divison von $f$ durch $d$ einen kleineren Grad als $d$. Wir illustrieren dies an einem Beispiel.
 	
 \begin{example}
+	Seien $f, d$ die durch $f(x) = 3x^4 - 2x^2 + 5, d(x) = x^2 + 1$ für alle $x \in \mathbb{C}$ gegebenen Polynome. Wir behaupten, dass Polynome $q$ und $r$ existieren, so dass $f = q\cdot d + e$ mit $\deg(r) < \deg(d) = 2$. Dazu wählen wit zuerst ein Polynome $q_1$ von der Form $q_1(x) = 3x^2$ für alle $x \in \mathbb{C}$, denn dann ist der Grad von $q \cdot d$ vier und $r_1(x) = f(x) -q_1(x)d(x) = -5x^2+5$ hat einen strikt kleiner Grad als $f$. Wir wenden das gleiche Prinzip nochmals auf $r_1$ an und betrachten das Polynom $q_2$ gegeben durch $q_2(x) = -5$ für alle $x\in \mathbb {C}$. Dann gilt $r_1(x)-q_2(x)d(x) = 10$ für alle $x\in \mathbb {C}$. Insbesondere hat das Polynom $r_1-q_2\cdot d$ einen strikt kleineren Grad als das Polynom $d$ (nämlich Null); wir setzen somit $r = r_1-q_2\cdot d$. Dann gilt 
+	\[r = r_1-q_2\cdot d = f- q_1 \cdot d - q_2 \cdot d = f- (q_1+q_2) \cdot d.\]
+	Wenn wir $q = q_1 + q_2$ setzen, haben wir also $f= q\cdot d + r$ mit $\deg (r) = 0 < 2 = \deg (d)$ wie gewünscht. Im Gymnasium wurde das Vorgehen vielleicht durch folgendes Diagramm dargestellt: 
+	\[\begin{aligned}[]
+		(&3x^4 -2x^2+5):(x^2+1) = 3x^2-5\\ 
+		-&\underline{3x^4 -3x^2}\\ & \quad \ \, -5x^2 + 5\\ 
+		& \quad \ \ \quad \underline{5x^2 + 5}\\ & \qquad \qquad \quad 10
+	\end{aligned}\] 
 \end{example}
 
+
 \subsection{Nullstellen und Interpolation}
+	Beim Betrachten eines expliziten Polynoms (und auch sonst) interessiert man sich oft für sehr spezifische Punkte, die Nullstellen des Polynoms. Eine Nullstelle eines Polynoms $f$ ist eine Zahl $z_1 \in \mathbb {C} mit f(z_1) = 0$.
+
 
 \subsection{Algebraische und tranzendente Zahlen}
+	Eine Zahl $\alpha \in \mathbb {C}$ heisst algebraisch, falls es ein von Null verschiedenes Polynom $f \in \mathbb {Q}[x]$ gibt mit $f(\alpha )=0$. Beispielsweise sind $\mathrm {i}$ und $\sqrt {2}$ algebraisch, denn $x^2+1$ hat $\mathrm {i}$ als Nullstelle und $x^2-2$ hat $\sqrt {2}$ als Nullstelle. Des Weiteren ist jede rationale Zahl algebraisch. Die Menge $\overline {\mathbb {Q}}$ der algebraischen Zahlen wird auch der algebraische Abschluss von $\mathbb {Q}$ genannt und ist (wie wir hier nicht zeigen wollen) ein Unterkörper von $\mathbb {C}$.	
+	
 \end{document}

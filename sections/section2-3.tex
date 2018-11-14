@@ -1,0 +1,51 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\subsection{Fakultät}
+
+\begin{definition}{(Fakultät)}
+	Die Funktion $n \in \mathbb {N}_0 \mapsto n! \in \mathbb {N}$ ist definiert durch
+	\[\begin{aligned}[]
+		0! = 1,\ n! = \prod _{k=1}^n k.
+	\end{aligned}\]
+Die Zahl $n!$ wird als $n$–\textbf{Fakultät} oder $n$–\textbf{Faktorielle} bezeichnet. 
+\end{definition}
+
+Insbesondere (nämlich per Definition des Produkts) gilt also die rekursive Formel
+\[\begin{aligned}[]
+	(n+1)! = (n!)\cdot (n+1)
+\end{aligned}\]
+für alle $n\in \mathbb {N}_0$. Wir werden dieser Funktion in vielen weiteren Funktionen und Ausdrücken begegnen. Sie hat jedoch auch für sich gesehen eine (kombinatorische) Bedeutung.
+
+\begin{lemma}{(Kordinalität der Menge der Permutation einer endlichen Menge)}
+	Für $n\in \mathbb {N}$ ist $n!$ die Kardinalität der Menge $\mathcal {S}_n$ der bijektiven Abbildungen $\sigma :\left \lbrace {1,\ldots ,n} \right \rbrace \to \left \lbrace {1,\ldots ,n} \right \rbrace$ (auch Permutationen von $\left \lbrace {1,\ldots ,n} \right \rbrace$ genannt). 
+\end{lemma}
+
+Intuitiv ausgedrückt gibt es also genau $n!$ verschiedene Möglichkeiten die Menge $\left \lbrace {1,\ldots ,n} \right \rbrace$ zu sortieren oder auch $n!$ Möglichkeiten für die verschiedenen Reihenfolgen, wenn alle n nummerierte Bälle zufällig aus einer Urne gezogen werden.
+
+\begin{remark}
+	Zu $n\in \mathbb {N}$ bildet die Menge $\mathcal {S}_n$ zusammen mit der Verknüpfung von Elementen $(\sigma ,\tau )\in \mathcal {S}_n^2 \mapsto \sigma \circ \tau \in \mathcal {S}_n$ eine Gruppe (die \textbf{symmetrische Gruppe}). 
+\end{remark}
+
+\begin{proof}
+	Wir beweisen die Aussage per Induktion. Für $n=1$ gibt es genau eine (bijektive) Abbildung $\left \lbrace {1} \right \rbrace \to \left \lbrace {1} \right \rbrace$, was den Induktionsanfang darstellt. 
+	
+	Angenommen die Aussage des Lemmas gilt bereits für ein $n\in \mathbb {N}$. Wir betrachten nun eine Permutation $\sigma$ von $\left \lbrace {1,\ldots ,n+1} \right \rbrace$. Falls $\sigma (n+1) = n+1$ gilt, so erhalten wir mittels Einschränkung auf $\left \lbrace {1,\ldots ,n} \right \rbrace$ eine bijektive Abbildung $\sigma ': k \in \left \lbrace {1,\ldots ,n} \right \rbrace \to \left \lbrace {1,\ldots ,n} \right \rbrace$ in $\mathcal {S}_n$. Umgekehrt können wir für jedes $\sigma '\in \mathcal {S}_n$ eine Fortsetzung $\sigma \in \mathcal {S}_{n+1}$ mit $\sigma (n+1)=n+1$ definieren. Daher wissen wir also per Induktionsannahme, dass es n! Abbildungen $\sigma \in \mathcal {S}_{n+1}$ mit $\sigma (n+1)=n+1$ gibt. Wir bezeichnen die Menge aller solcher Permutation in $\mathcal {S}_{n+1}$ mit 
+	\[H=\left \lbrace {\sigma \in \mathcal {S}_{n+1}} \mid {\sigma (n+1)=n+1}\right \rbrace ,\]
+	so dass $|H|=n!$
+	Die Menge $\mathcal {S}_{n+1}$ lässt sich wie folgt partitionieren:
+	 \[\mathcal {S}_{n+1} = \bigsqcup _{k=1}^{n+1}P_k\text { mit } P_k=\left \lbrace {\tau \in \mathcal {S}_{n+1}} \mid {\tau (n+1) = k}\right \rbrace\]
+für $k=1,\ldots ,n+1$. Wir behaupten nun, dass die Mengen $P_k$ auf der rechten Seite alle Kardinalität $n!$ haben (für $k=n+1$ ist dies bereits bekannt, da $P_{n+1}=H$). Dies impliziert 
+	 \[|\mathcal {S}_{n+1}| = (n!)\cdot (n+1) = (n+1)!\]
+und damit nach vollständiger Induktion das Lemma.
+\end{proof}
+
+\subsection{Binomialkoeffizienten}
+
+\subsection{Der binomische Lehrsatz}
+
+\subsection{Eine Summe von Binomialkoeffizienten}
+
+
+
+\end{document}

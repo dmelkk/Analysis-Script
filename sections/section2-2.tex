@@ -25,10 +25,32 @@
 \end{proposition}
 
 \begin{proof}
-\textbf{*** hier muss Beweis sein ***}
+	Sei $f(T) = a_n T^n + a_{n-1} T^{n-1} + \ldots + a_1 T + a_0 \in \mathbb{C}[T]$ mit $a_0 \neq 0$ und $n \geq 1$. Wir definieren $q(T) \in \mathbb{C}[T]$ durch $q(T) = a_{n-1} T^{n-1} + \ldots + a_1 T + a_0$, womit $f(T) = a^n T_n + q(T)$. Nun behaupten wir, dass die Polynomfunktion $q(z)$ "langsamer wächst als" $a_n z^n$ und schätzen also $|q(z)|$ für $z \in \mathbb{C}$ mit $|z| \geq 1$ nach oben ab:
+	\[\begin{aligned}[]
+		|q(z)| &= |a_{n-1}z^{n-1}+ \ldots +a_1z+a_0| \\ 
+		&\leq |a_{n-1}z^{n-1}|+ \ldots +|a_1z|+|a_0|\\ 
+		&= |a_{n-1}||z^{n-1}|+ \ldots +|a_1||z|+|a_0|\\ 
+		&\leq (|a_{n-1}|+\ldots + |a_1| + |a_0|) |z|^{n-1} = A |z|^{n-1},
+	\end{aligned}\]
+	wobei wir $A= |a_{n-1}|+\ldots + |a_1| + |a_0|$ gestzt haben und $|z| \geq 1$ in der Form $|z|^k \leq |z|^{n-1}$ für $k \in \{0, \ldots, n-1\}$ verwendet haben. Mit der umgekehrten Dreiecksgleichung und $f(z) = a_n z^n + q(z)$ gilt somit
+	\[\begin{aligned}[]
+		|f(z)| \geq |a_nz^n| -|q(z)| &\geq |a_n||z|^n - A |z|^{n-1} \\ 
+		&= (|a_n||z|-A) |z|^{n-1} \geq |a_n||z|-A,
+	\end{aligned}\]
+	falls $|a_n||z| - A \geq 0$ oder äquivalenterweise $|z| \geq \frac{A}{|a_n|}$. Sei nun $M > 0$ beliebig. Dann wählen wir
+	\[R = \max \left \lbrace {1,\frac {A}{|a_n|},\frac {A+M}{|a_n|}} \right \rbrace .\]
+	Falls nun $z \in \mathbb{C}$ die Ungleichung $|z| \geq R$ erfüllt, dann gilt $|z| \geq 1$ und $|z| \geq \frac{A}{|a_n|}$, wonach obige Unglecihungen ergeben
+	\[|f(z)| \geq |a_n||z|-A \geq |a_n|\frac {A+M}{|a_n|} -A = M,\] 
+	was die erste Behauptung der Proposition beweist.
+	
+	Angenommen $f_1(T), f_2(T) \in \mathbb {C}[T]$ sind zwei Polynome, die $f_1(z) = f_2(z)$ für alle $z in \mathbb {C}$ erfüllen. Dann hat das Polynom $g(T) = f_1(T) - f_2(T)$ die Eigenschaft, dass $g(z) = 0$ für alle $z \in \mathbb {C}$ gilt. Falls der Grad des Polynoms $g(T)$ grösser gleich Eins ist, widerspricht dies dem ersten Teil der Proposition. Also ist $g(T)$ konstant, womit $g(T) = 0$ gelten muss und daher sind die Polynome $f_1(T)$ und $f_2(T)$ identisch (d.h. sie haben denselben Grad und dieselben Koeffizienten). Diesen Beweis kann man ebenso für reelle Polynome und die zugehörigen Polynomfunktionen von $\mathbb {R}$ nach $\mathbb {R}$ durchführen.
 \end{proof}
 
 \subsection{Polynomdivision}
+	Wie wir gesehen haben, existiert auf $\mathbb {N}$ eine Division von $n$ durch $d$ mit Rest gegeben durch $n=qd+r$. Dabei ist der Rest $r$ strikt kleiner (bezüglich $\leq$) als $d$. Division mit Rest gibt es auch für Polynome. Hier hat der Rest bei der Divison von $f$ durch $d$ einen kleineren Grad als $d$. Wir illustrieren dies an einem Beispiel.
+	
+\begin{example}
+\end{example}
 
 \subsection{Nullstellen und Interpolation}
 

@@ -1,0 +1,72 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+
+Sei $D \subseteq \mathbb{R}$ eine nicht-leere Teilmenge
+\begin{definition}{(Stetigkeit)}
+	Sei $f: D \to \mathbb{R}$ eine Funktion. Wir sagen, dass $f$ \textbf{stetig bei einem Punkt} $x_0 \in D$ ist, falls es für alle $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass für alle $x \in D$ die Implikation 
+	\[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon\]
+	gilt. Die Funktion $f$ ist \textbf{stetig}, falls sie bei jedem Punkt in $D$ stetig ist. Formal ist Stetigkeit von $f$ also durch
+	\[\forall x_0 \in D: \forall \varepsilon > 0 \exists \delta > 0 \forall x \in D: |x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon\]
+	definiert.  
+\end{definition}
+
+\begin{proposition}{(Stetigkeit unter Addition und Multiplikation von Funktionen)}
+	Sei $D \subseteq \mathbb{R}$. Falls $f_1, f_2: D \to \mathbb{R}$ Funktionen sind, die beid einem Punkt $x_0$ stetig sind, dann sind auch $f_1 + f_2, f_1 \cdot f_2, af_1$ für $a \in \mathbb{R}$ stetig bei $x_0$. Insbesonders bildet die Menge der stetigen Funktionen 
+	\[C(D) = \{f \in \mathcal{F}(D) | f \text{ist stetig}\}\]
+	einen Unterraum des Vektorraums $\mathcal{F}(D)$.
+\end{proposition}
+
+\begin{proof}
+	Angenommen $f_1, f_2 \in \mathcal{F}(D)$ sind bei $x_0 \in D$ stetig und sei $\varepsilon > 0$. Dann existieren $\delta_1, \delta_2 > 0$, so dass für alle $x \in D$ gilt
+	\[\begin{aligned}[]
+		|x - x_0| < \delta_1 \implies |f_1(x) - f_1(x_0)| < \frac{\varepsilon}{2}\\
+		|x - x_0| < \delta_2 \implies |f_2(x) - f_2(x_0)| < \frac{\varepsilon}{2}
+	\end{aligned}\]
+	Wir setzen $\delta = \min(\{\delta_1, \delta_2\}) > 0$ und erhalten
+	\[\begin{aligned}[]
+		|x - x_0| < \delta \implies |(f_1 + f_2)(x) &- (f_1 + f_2)(x_0)|\\
+		&\leq |f_1(x) - f_1(x_0)| + |f_2(x) - f_2(x_0)|\\
+		&< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+	\end{aligned}\]
+	Da $\varepsilon > 0$ beliebig war, erhalten wir, dass $f_1 + f_2$ bei $x_0 \in D$ stetig ist.
+	
+	Das Argument für $f_1 \cdot f_2$ ist änlich, aber etwas komplizierter. Wir beginnen mit der Abschätzung
+	\[\begin{aligned}[]
+		|f_1(x)f_2(x) - f_1(x_0)f_2(x_0)| &= |f_1(x)f_2(x) - f_1(x_0)f_2(x) + f_1(x_0)f_2(x) - f_1(x_0)f_2(x_0)|\\ 
+		&\leq |f_1(x)f_2(x) - f_1(x_0)f_2(x)| + |f_1(x_0)f_2(x) - f_1(x_0)f_2(x_0)|\\
+		&= |f_1(x) - f_1(x_0)||f_2(x)| + |f_1(x_0)||f_2(x) - f_2(x_0)|
+	\end{aligned}\]
+	für $x \in D$ unter Verwendung der Dreiecksungleichung. Sei $\varepsilon > 0$ und wähle $\delta_1 > 0$ und $\delta_2 > 0$, so dass für $x \in D$
+	\[\begin{aligned}[]
+		&|x - x_0| < \delta_1 \implies |f_1(x) - f_1(x_0)| < \frac{\varepsilon}{2(|f_2(x_0)| + 1)}\\
+		&|x - x_0| < \delta_2 \implies |f_2(x) - f_2(x_0)| < \min\left\{1, \frac{\varepsilon}{2(|f_1(x)| + 1)}\right\}
+	\end{aligned}\]
+	erfüllt sind. Dann gilt für ein $x \in D$ mit $|x - x_0| < \delta = \min\{\delta_1, \delta_2\}$, dass
+	\[|f_2(x)| = |f_2(x) - f_2(x_0) + f_2(x_0)| \leq |f_2(x) - f_2(x_0)| + |f_2(x_0)| < 1 + |f_2(x_0)|\]
+	und damit
+	\[f_1(x) - f_1(x_0)||f_2(x)| < \frac{\varepsilon}{2(|f_2(x_0)| + 1)}(1 + |f_2(x_0)|) = \frac{\varepsilon}{2}\]
+	Für das zweite Argument gilt ebenso
+	\[|f_1(x_0)||f_2(x) - f_2(x_0)| \leq |f_1(x_0)|\frac{\varepsilon}{2(|f_1(x_0)| + 1)} < \frac{\varepsilon}{2}\]
+	Gemeinsam erhalten wir $|f_1(x)f_2(x) - f_1(x_0)f_2(x_0)| < \varepsilon$ wie gewünscht. Die Aussage über $af_1$ für $a \in \mathbb{R}$ folgt mit Obigem und der Tatsache, dass die konstante Funktion $x \in \mathbb{R} \mapsto a \in \mathbb{R}$ stetig ist. Insbesondere ist $C(D)$ auch nicht leer, da die konstant Nullfunktion in $C(D)$ liegt, und somit ist $C(D)$ ein Unterraum von $\mathcal{F}(D)$.
+\end{proof}
+
+\begin{corollary}
+	Polynome sind stetig, das heisst $\mathbb{R}[x] \subseteq C(\mathbb{R})$.
+\end{corollary}
+
+\begin{proposition}{(Stetigkeit unter Verknüpfung)}
+	Sei $D_1, D_2 \subseteq \mathbb{R}$ zwei Teilmengen und sei $x_0 \in D_1$. Angenommen $f_1: D_1 \to D_2$ ist eine bei $x_0$ stetige Funktion und $g: D_2 \to \mathbb{R}$ ist eine bei $f(x_0)$ stetige Funktion. Dann ist $g \circ f: D_1 \to \mathbb{R}$ bei $x_0$ stetig. Insbesondere ist die Verknüpfung von stetigen Funktionen wieder stetig.
+\end{proposition}
+
+\begin{proof}
+	Sei $\varepsilon > 0$. Dann existiert wegen der Stetigkeit von $g$ bei $f(x_0)$ ein $\eta > 0$, so dass für alle $y \in D_2$
+	\[|y - f(x_0)| < \eta \implies |g(y) - g(f(x_0))| < \varepsilon\]
+	Da $\eta > 0$ ist und $f$ bei $x_0$ stetig ist, gibt es aber auch ein $\delta > 0$, so dass für alle $x \in D_1$
+	\[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \eta\]
+	Zusammen ergibt sich (für $y = f(x) \in f(D_1) \subseteq D_2$), dass für alle $x \in D_1$
+	\[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \eta \implies |g(f(x)) - g(f(x_0))| < \varepsilon\]
+	gilt. Dies beweist auch die letzte Aussage, da $x_0$ ein beliebiger Punkt in $D_1$ war.
+\end{proof}
+\subsection{Komplex-wertige Funktionen}
+\end{document}

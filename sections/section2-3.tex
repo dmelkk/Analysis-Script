@@ -42,10 +42,94 @@ und damit nach vollständiger Induktion das Lemma.
 
 \subsection{Binomialkoeffizienten}
 
+Für $n, k \in \mathbb{N}_0$ mit $0 \leq k \leq n$ definieren wir den \textbf{Binomialkoeffizient} $\binom{n}{k}$, als "$n$ über $k$" ausgesprochen, durch 
+\[\binom{n}{k} = \frac{n!}{k!(n-k)!}\]
+Ersetzen wir $k$ bei gleichbleibendem $n$ im Binomialkoeffizienten durch $n - k$, so vertauschen sich bloss die beiden Ausdrücke im Nenner und wir erhalten
+\[\binom{n}{k} = \binom{n}{n-k}\]
+für alle $n, k \in \mathbb{N}_0$ mit $0 \leq k \leq n$.
+
+\begin{proposition}{(Additioneigneschaft der Binomialkoeffizienten)}
+	Für alle $n, k \in \mathbb{N}_0$ mit $0 \leq k \leq n - 1$  gilt $\binom{n}{0} = \binom{n}{n} = 1$ und 
+	\[\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}\]
+	Insbesondere ist $\binom{n}{k} \in \mathbb{N}$ für alle $n, k \in \mathbb{N}_0$ mit $0 \leq k \leq n$.
+\end{proposition}
+\includesvg{../images/pascal_dreieck}
+\begin{proof}
+	Wir verwenden die Definition der Binomialkoeffizienten und erhalten
+	\[\binom{n}{0} = \binom{n}{n} = \frac{n!}{0!n!} = 1\]
+	sowie
+	\[\begin{aligned}[]
+		\binom{n}{k} + \binom{n}{k+1} &= \frac{n!}{k!(n-k)!} + \frac{n!}{(k+1)!(n-k-1)!}\\
+		&= \frac{(k+1)n!}{(k+1)!(n-k)!} + \frac{(n-k)n!}{(k+1)!(n-k)!}\\
+		&= \frac{(k + 1 + n - k)n!}{(k+1)!((n+1)-(k+1))!} = \binom{n+1}{k+1}
+	\end{aligned}\]
+	durch Erweiterung mit $k+1$ bzw. $n-k$.
+\end{proof}
+
+
 \subsection{Der binomische Lehrsatz}
+
+\begin{proposition}{(Binomischer Lehrsatz)}
+	Für $w, z \in \mathbb{C}$ und $n \in \mathbb{N}_0$
+	\[(w + z)^n = \sum_{k=0}^n \binom{n}{k}w^{n-k} z^k\]
+\end{proposition}
+
+\begin{proof}
+	Wir verwenden vollständige Induktion über $n$. Für $n=0$ gilt die Aussage, da
+	\[(w + z)^0 = 1 = \sum_{k=0}^0 1w^{0-k} z^k\]
+	Aungenommen die Aussage des Satzes gilt für ein $n \in \mathbb{N}_0$. Dann erhalten wir
+	\[\begin{aligned}[]
+		(w + z)^{n+1} &= (w + z)^{n}(w + z) = (\sum_{k=0}^n \binom{n}{k}w^{n-k}z^k)(w + z)\\
+		&= \sum_{k=0}^n \binom{n}{k}w^{n+1-k}z^k + \sum_{k=0}^n \binom{n}{k}w^{n-k}z^{k+1}\\
+		&= w^{n+1} + \sum_{j=1}^n \binom{n}{j}w^{n+1-j}z^j + \sum_{k=0}^{n-1} \binom{n}{k}w^{n-k}z^{k+1} + z^{n+1}\\
+		&= w^{n+1} + \sum_{k=0}^n \binom{n}{k+1}w^{n-k}z^{k+1} + \sum_{k=0}^{n-1} \binom{n}{k}w^{n-k}z^{k+1} + z^{n+1}\\
+		&= w^{n+1} + \sum_{k=0}^{n}\binom{n+1}{k+1}w^{(n+1)-(k+1)}z^{k+1} + z^{n+1}\\
+		&= w^{n+1} + \sum_{\ell=1}^{n}w^{n+1-\ell}z^{\ell} + z^{n+1}\\
+		&= \sum_{\ell=1}^{n+1}w^{n+1-\ell}z^{\ell}
+	\end{aligned}\]
+	unter Verwnedung von (zwei) Indexverschiebungen und der Aditionsformel.
+\end{proof}
+
 
 \subsection{Eine Summe von Binomialkoeffizienten}
 
+\begin{proposition}{(Summe von Potenzen)}\label{bin:sum_of_pot}
+	Für jedes $d \in \mathbb{N}_0$ gibt es rationle Konstanten $c_0, \ldots, c_d \in \mathbb{Q}$, so dass
+	\[\sum_{k=1}^{n}k^d = \frac{1}{d+1}n^{d+1} + c_{d}n^{d} + \ldots + c_{1}n + c_0\]
+	für alle $n \in \mathbb{N}$ gilt.
+\end{proposition}
 
+\begin{proposition}{(Summe von Binomialkoeffizienten)}\label{bin:sum_of_binkoeff}
+	Für jedes $d \in \mathbb{N}$ ist $p_{d}(x)$ ein Polynome mit rationalen Koeffizienten vom Grad $d$, welches Leitkoeffizient $\frac{1}{d!}$ und Nullstellen $0, \ldots, d-1$ besitzt. Für jedes $d \in \mathbb{N}_0$ gilt des Weiteren $p_{d}(n) = \binom{n}{d}$ für alle $n \geq d$ und wir haben die Summenformel 
+	\[\sum_{k=0}^{n}p_{d}(k) = p_{d+1}(n+1)\]
+	für alle $n \in \mathbb{N}$.
+\end{proposition}
 
+\begin{proof}\ref{bin:sum_of_binkoeff}
+	Seien $d, n \in \mathbb{N}_0$. Falls $n \in \{0, \ldots, d-1\}$ liegt, gilt $p_{d}(k) = 0$ für alle $k \in \{0, \ldots, n\}$ und damit auch
+	\[p_{d+1}(n+1) = 0 = \sum_{k=0}^{n}p_{d}(k)\]
+	Wir dürfen also $d \leq n$ annehmen. Sei $\mathcal{P}$ die Menge aller $(d+1)$-elementigen Teilmengen von $\{1, \ldots, n+1\}$. Da $A \in \mathcal{P}$ genau $d+1$ Elementen und nur natürliche Zahlen enthält, gilt $\max(A) \geq d+1$. Wir verwenden dies um 
+	\[\mathcal{P} = \bigsqcup_{\ell=d+1}^{n+1}\mathcal{P}_{\ell}\]
+	in die Teilmengen $\mathcal{P}_{\ell} = \{A \in \mathcal{P} | \max(A) = \ell\}$ für $\ell \in \{d+1, \ldots, n+1\}$ zu partitionieren, so dass
+	\[\binom{n+1}{d+1} = |\mathcal{P}| = \sum_{\ell=d+1}^{n+1}|\mathcal{P}_{\ell}|\]
+	Für $\ell \in \{d+1, \ldots, n+1\}$ und eine Teilmenge $A \in \mathcal{P}_{\ell}$ gilt nach Definition $\ell \in A$ und $A \subseteq \{1, \ldots, \ell\}$. Entfernen wir von diesem $A$ das Element $\ell$, so erhalten wir eine $d$-elementige Teilmenge $A \setminus \{\ell\}$ von $\{1, \ldots, \ell-1\}$, welche eindeutig von $A$ bestimmt. Zusammenfassend bildet die Abbildung $A \mapsto A \setminus \{\ell\}$ also eine Bijektion zwischen $\mathcal{P}_{\ell}$ und den $d$-elementige Teilmenge von $\{1, \ldots, \ell-1\}$. Ergibt sich sommit $|\mathcal{P}_{\ell}| = \binom{\ell-1}{d} = p_{d}(\ell-1)$ für alle $\ell = d+1, \ldots, n+1$ und daher
+	\[p_{d+1}(n+1) = \binom{n+1}{d+1} = \sum_{\ell=d+1}^{n+1}\binom{\ell-1}{d} = \sum_{k=d}^{n}\binom{k}{d} = \sum_{k=0}^{n}p_{d}(k)\]
+	da $p_{d}(0) = \dots = p_{d}(d-1) = 0$
+\end{proof}
+
+\begin{proof}\ref{bin:sum_of_pot}
+	Wir beweisen mittels vollständiger Induktion nach $d \in \mathbb{N}_0$, dass es rationale Zahlen $c_d, \ldots, c_0 \in \mathbb{Q}$ gibt, für die 
+	\[\sum_{k=1}^{n}k^d = \frac{1}{d+1}n^{d+1} + c_{d}n^{d} + \dots + c_{0}n^{0}\]
+	für alle natürlichen Zahlen $n \in \mathbb{N}$ gilt. Sei also $d \in \mathbb{N}_0$. so dass bereits für alle $d' \in \mathbb{N}_0$ mit $d' \leq d$ beweisen wurde, und sei $n \in \mathbb{N}$. Per Definition von $p_{d+1}(T)$, $p_{d+1}(T)$  ist ein Polynom mit rationalen Koeffizienten und Leitkoeffizient $\frac{1}{(d+1)!}$ und es gilt
+	\[p_{d+1}(n+1) = \frac{1}{(d+1)!}(n+1)n(n-1)\ldots (n-d)\]
+	für alle $n \in \mathbb{N}$. Wir multiplizieren dies mit $d!$ und erhalten nach Ausmultiplizieren sowie nach Proposition \ref{bin:sum_of_binkoeff}, dass
+	\[d! \sum_{k=0}^{n}p_{d}(k) = \frac{1}{d+1}n^{d+1} + c'_{d}n^{d} + \dots + c'_{0}n^{0}\]
+	für gewisse $c'_{d}, \ldots, c'_{0} \in \mathbb{Q}$ und alle $n \in \mathbb{N}$ gilt. Ebenso können wir aber $p_d$ ausmultiplizieren und erhalten analog
+	\[d!p_{d}(k) = k^d + c''_{d-1}k^{d-1} + \dots c''_{0}k^{0}\]
+	für gewisse Konstanten $c''_{d-1}, \ldots, c''_{0} \in \mathbb{Q}$ und alle $k \in \mathbb{N}$. Dies ergibt 
+	\[\sum_{k=0}^{n}k^d = \frac{1}{d+1}n^{d+1} + c'_{d}n^{d} + \dots + c'_{0}n^{0} - \sum_{j=0}^{d-1}c''_{j}\sum_{k=0}^{n}k^{j}\]
+	Nach Induktionsvoraussetzung ist aber $\sum_{k=0}^{n}k^{j}$ gleich $f_{j}(n)$ für ein Polynom $f_{i}(T)$ mit Grad $j + 1 \leq d$ und mit rationalen Koeffizienten. Daher ist auch 
+	\[c'_{d}n^{d} + \dots + c'_{0}n^{0} - \sum_{j=0}^{d-1}c''_{j}\sum_{k=0}^{n}k^{j}\]
+	gleich $g(n)$ für ein Polynom $g(T)$ mit Grad kleiner gleich $d$ mit rationalen Koeffizienten. Dies beweist den Induktionsschrit und damit die Proposition.
+\end{proof}
 \end{document}

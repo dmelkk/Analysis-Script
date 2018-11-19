@@ -1,0 +1,21 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\begin{proposition}{(Umkehrsatz)}
+	Sei $I$ ein Intervall und $f : I \to \mathbb{R}$ eine stetige, streng monotone Funktion. Dann ist $f(I) \subseteq \mathbb{R}$ wieder ein Intervall und die Abbildung $f: I \to f(I)$ hat eine stetige, streng monotone inverse Abbildug $f^{-1}: f(I) \to I$. Falls $I = [a, b]$ für reelle Zahlen $a < b$, dann gilt des Weiteren, dass $f(I)$ die Endpunkte $f(a)$ und $f(b)$ hat.
+\end{proposition}
+
+\begin{example}{(Existenz von Wureln höherer Ordnung)}
+	Sei $n \in \mathbb{N}$. Dann ist die Funktion $x \in [0, \infty) \mapsto x^n \in [0, \infty)$ streng monoton wachsend und surjektiv. Um Surjektivität zu sehen betrachten wir ein biliebiges $c \in [0, \infty)$. Nach der Bernoullischen Ungleichung gilt $(c + 1)^n > nc \geq c$, womit $c$ zwischen $0 = 0^n$ und $(c + 1)^n$ liegt. Aus dem Zwischenwertsatz folgt nun, dass es ein $x$ zwischen $0$ und $c + 1$ gibt, für das $x^n = c$ ist.
+	
+	Nach dem Umkehrsatz exestiert eine stetige, streng monoton wachsend Umkehrabbildung
+	\[x \in [0, \infty) \mapsto \sqrt[n]{x} \in [0, \infty)\]
+	die die \textbf{n-te Wurzel} genannt wird. Des Weiteren definieren wir für $x \in [0, \infty)$ und $m, n \in \mathbb{N}$
+	\[x^{\frac{m}{n}} = \sqrt[n]{x^m}\]
+	und für $x \in (0, \infty)$ und $m, n \in \mathbb{N}$ auch $x^{-\frac{m}{n}} = (x^{\frac{m}{n}})^{-1}$
+\end{example}
+
+\begin{proof}
+\end{proof}
+\subsection{Wurzeln aus natürlichen Zahlen}
+\end{document}

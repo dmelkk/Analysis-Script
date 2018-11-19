@@ -1,0 +1,27 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+
+\begin{proposition}{(Zwischenwertsatz)}
+	Sei $I \subseteq \mathbb{R}$ ein Intervall, $f : I \to \mathbb{R}$ eine stetig Funktion und $a, b \in I$. Für jedes $c \in \mathbb{R}$ zwischen $f(a)$ und $f(b)$ gibt es ein $x \in \mathbb{R}$ zwischen $a$ und $b$, so dass $f(x) = c$ gilt.
+\end{proposition}
+
+\includesvg{../images/zwsatz.pdf}
+
+\begin{proof}
+	Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $a < b$ und $f(a) \leq f(b)$ gilt (falls $f(a) > f(b)$ ist, betrachtet man zuerst $-f$ und bemerkt, dass die Aussage des Satzes für $-f$ die Aussage des Satzes für $f$ impliziert).
+	
+	Sei nun $c \in [f(a), f(b)]$. Falls $c = f(a)$ oder $c = f(b)$ gilt, sind wir fertig. Also angenommen $c \in (f(a), f(b))$. Wir definieren 
+	\[X = \{x \in [a, b] | f(x) \leq c\}\]
+	und bemerken, dass $a \in X$ und $X \subseteq [a, b]$, wodurch $X$ nicht-leer und von oben beschränkt ist. Dacher exestiert $x_0 = \sup(X) \in [a, b]$. Wir werden nun die Stätigkeit von $f$ bei $x_0$ verwenden, um zu zeigen, dass $f(x_0) = c$
+	
+	Für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$, so dass $x \in [a, b]$ gilt
+	\[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon\]
+	Angenommen $f(x_0) < c$. Dann folgt $x_0 < b$ wegen $f(b) > c$ und $x_0 \in [a, b]$. Wir wenden nun die Stetigkeit von $f$ bei $x_0$ an und finden für $\varepsilon = c - f(x_0) > 0$ ein $\delta > 0$. Da $x_0 < b$ ist, exestiert ein $x \in (x_0, x_0 + \delta) \cap [a, b]$. Für dieses $x$ gilt dann 
+	\[f(x) = f(x_0) + (f(x) - f(x_0)) < f(x_0) + c - f(x_0) = c\]
+	Also muss $x$ in $X$ liegen, was aber $\sup(X) = x_0 < x$ wiederspricht.
+	
+	Angenommen $f(x_0) > c$. Dann folgt $x_0 > a$ wegen $f(a) < c$. Wir verwenden wieder die Stätigkeit von $f$ bei $x_0$ und finden zu $\varepsilon = f(x_0) - c$ ein $\delta > 0$. Für $x \in (x_0 - \delta, x_0) \cap [a, b]$ gilt dadurch
+	\[f(x) = f(x_0) + (f(x) - f(x_0)) > f(x_0) - (f(x_0) - c) = c\]
+	wodurch $x \notin X$ und daher $(x_0 - \delta, x_0) \cap [a, b] \cap X = \emptyset$. Also ist $x_0 - \delta$ eine obere Schränke von $X$, was aber $x_0 = \sup(X)$ wiederspricht. Daher gilt $f(x_0) = c$ und der Satz folgt.
+\end{proof}
+\end{document}

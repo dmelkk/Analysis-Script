@@ -16,6 +16,45 @@
 \end{example}
 
 \begin{proof}
+	Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $f$ streng monoton wachsend ist (sonst ersetz man $f$ mit $-f$). Wir bemerken zuerst, dass die Funktion $f: I \to f(I)$ bijecktiv ist, da sie (per Definition) surjektiv ist und auf Grund der strengen Monotonie auch injektiv ist. Somit existriert eine (eindeutig bestimmte) Umkehrabbildung $g = f^{-1} : f(I) \to I$, welche auch streng monoton wachsend sein muss: Da $f$ streng monoton wachsend ist, gilt 
+	\[x_1 < x_2 \iff f(x_1) < f(x_2)\]
+	für alle $x_1, x_2 \in I$, was zu 
+	\[f^{-1}(y_1) < f^{-1}(y_2) \iff y_1 < y_2\]
+	für alle $y_1, y_2 \in f(I)$ äquivalent ist.
+	
+	Wir möchten nun zeigen, dass $f(I)$ auch ein Intervall ist und nehmen dazu vorerst an, dass $I = [a, b]$ ein abgeschlossenenes, beschränkten Intervall für zwei reelle Zahlen $a < b$ ist. Auf Grund der Monotonieannahme gilt $f(x) \in [f(a), f(b)]$ für alle $x \in [a, b]$. Nach dem Zwischenwertsatz ist auch $f([a, b]) = [f(a), f(b)]$ und damit ist $f(I)$ insbesondere ein Intervall.
+	
+	Sei nun $I$ ein beliebiges Intervall in $\mathbb{R}$ mit Endpunkten $a < b$ in $\bar{\mathbb{R}}$. Wir definieren nun die Punkte $c = \inf{f(I)} \in \bar{\mathbb{R}}$ und $d = \sup{f(I)} \in \bar{\mathbb{R}}$ und behaupten, dass $(c, d)$ und $f(I)$ enthalten ist. Sei $y \in (c, d)$. Dann gibt es nach Definition von $c = \inf{f(I)}$ und wegen $c < y$ ein $x_- \in I$ mit $c \leq f(x_-) < y$. Ebenso gibt es nach Definition von $d = \sup{f(I)}$ und wegen $y < d$ ein $x_{+} \in I$ mit $y < f(x_{+}) \leq d$. Nacg dem Zwischenwertsatz ist also $y \in f(I)$ und die Behauptung folgt. Wir haben damit insbesondere gezeigt, dass $f(I)$ ein Intervall ist.
+	
+	Falls der linke Endpunkte $a$ von $I$ zu $I$ gehört, dann ist $c = f(a) = \inf{f(I)} = \min{f(I)}$. Falls $a$ nicht zu $I$ gehört, dann gibt es zu jedem $x \in I$ ein Element $x_- \in I$ mit $x_ < x$, was wiederum wegen der strengen Monotonie impliziert, dass $f(I)$ kein Minimum besitzt (da es zu jedem $y \in f(I)$ ein Element $y_- \in f(I)$ mit $y_- < y$ gibt). Das heisst, der linke Endpunkte von $I$ gehört zu $I$ genau dann, wenn $c$ zum Intervall $f(I)$ gehört. Dasselbe gilt auch für den rechten Endpunkt.
+	
+	Wir wollen nun zeigen, dass $g = f^{-1}$ stetig ist. Sei also $y_0 \in f(I)$ und $\varepsilon > 0$. Wir definieren den Punkt $x_0 = g(y_0)$.
+	
+	Falls $y_0 < d$ und damit auch $x_0 < b$ ist, dann gibt es einen Punkt $x_+$ in $(x_0, x_0 + \varepsilon)$ mit $x_+ < b$. Wir definieren $y_+ = f(x_+) > y_0$ und erhalten für alle $y \in f(I)$
+	\[y_0 \leq y < y_+ \implies f^{-1}(y_0) \leq f^{-1}(y) < f^{-1}(y_+) = x_+ < f^{-1}(y_0) + \varepsilon\]
+	oder auch
+	\[y_0 \leq y \leq y_+ \implies |f^{-1}(y) - f^{-1}(y_0)| < \varepsilon\]
+	Falls $a \in I$ und $y_0 = c = f(a)$ gilt, ist dies bereits die Stetigkeitsbedingung bei $y_0$ für $\varepsilon$ und die Wahl $\delta = y_+ - y_0$. In der Tat falls $y \in f(I)$ und $|y- y_0| < \delta$ sit, so folgt $y \geq c = f(a) = y_0$ aus $c = \min{f(I)}$ und damit $y_0 \leq y < y_+$ aus der Definition von $\delta$
+	
+	Falls $y_0 > c$ und damit acuh $x_0 > a$ ist, dann gibt es einen Punkt $x_- \in (x_0 - \varepsilon, x_0)$ mit $x_- > a$. Wir definieren $y_- = f(x_-) < y_0$ ud erhalten wie zuvor für alle
+	\[y_- < y \leq y_0 \implies f^{-1}(y_0) - \varepsilon < x_- = f^{-1}(y_-) < f^{-1}(y) \leq f^{-1}(y_0)\]
+	oder auch 
+	\[y_- < y \leq y_0 \implies |f^{-1}(y) - f^{-1}(y_0)| < \varepsilon\]
+	Falls $b \in I$ und $y_0 = f(b)$ ist dies wiederum die Stetigkeitsbedingung bei $y_0$ für $\varepsilon$ und $\delta = y_0 - y_-$.
+	
+	Für einen beliebigen Punkte $y_0 \in (a, b)$ setzen wir $\delta = \min{y_+ - y_0, y_0 - y_-}$ und können die Gleichungen kombinieren zu
+	\[|y- y_0| < \delta \implies |f^{-1}(y) - f^{-1}(y_0)| < \varepsilon\]
+	für alle $y \in f(I)$, was zu beweisen war.
 \end{proof}
+
 \subsection{Wurzeln aus natürlichen Zahlen}
+
+\begin{lemma}
+	Seien $m, k \in \mathbb{N}$. Die $m$-te Wurzel $\sqrt[m]{k}$ ist genau dann rational, wenn sie eine ganze Zahl ist.
+\end{lemma}
+
+\begin{proof}
+	Angenommen $\sqrt[m]{k} = \frac{p}{q} \in \mathbb{Q}$ für zwei natürlichen Zahlen $p, q \in \mathbb{N}$. Nach Kürzen mit dem grössten gemeinsamen Teiler können wir annehmen, dass $\frac{p}{q}$ durchgekürzt ist oder äquivalent dazu, dass $p$ und $q$ teilerfremd sind. Dann ist aber auch $k = \big(\frac{p}{q}\big)^m = \frac{p^m}{q^m}$ ein durchgekürzter Bruch, denn jeder Primfaktor von $p^m$ (resp. $q^m$) ist ein Primfactor von $p$ (resp. $q$) und somit sind $p^m$ und $q^m$ teilerfremd. Nach Annahme ist aber $\frac{p^m}{q^m} = k \in \mathbb{Z}$, was $q^m \mid p^m, q^m = 1$ und also $q = 1$ impliziert. Dann ist $k = p^m$ und $\frac[m]{k} = p \in \mathbb{Z}$. Die Umkehrung folgt aus $\mathbb{Z} \subseteq \mathbb{Q}$.
+\end{proof}
+
 \end{document}

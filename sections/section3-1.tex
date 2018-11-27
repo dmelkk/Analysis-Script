@@ -1,0 +1,47 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+
+\begin{document}
+
+\begin{definition}{(Folge)}
+	Sei $X$ eine Menge. Eine \textbf{Folge} in $X$ ist eine Abbildung $a: \mathbb {N} \to X$. Das Bild $a(n)$ von $n\in \mathbb {N}$ schreibt man auch als $a_n$ und bezeichnet es als das $n$-te \textbf{Folgenglied} von $a$. Anstatt $a:\mathbb {N}\to X$ schreibt man oft $(a_n)_{n\in \mathbb {N}}$, $(a_n)_{n=1}^\infty$ oder kurz $(a_n)_{n}$. Die Menge der Folgen in $X$ wird auch als $X^{\mathbb {N}}$ bezeichnet. Eine Folge $(a_n)_n$ heisst \textbf{konstant}, falls $a_n = a_m$ für alle $m,n\in \mathbb {N}$, und \textbf{schliesslich konstant}, falls ein $N\in \mathbb {N}$ existiert mit $a_n = a_m$ für alle $m,n\in \mathbb {N}$ mit $m,n \geq N$. 
+\end{definition}
+
+\begin{definition}{(Grenzwert)}
+	Wir sagen, dass eine Folge $(a_n)_{n}$ in $\mathbb {C}$ gegen eine Zahl $A\in \mathbb {C}$ \textbf{strebt}, gegen die Zahl $A$ \textbf{konvergiert} oder \textbf{Grenzwert} $A$ hat, falls es für jedes $\varepsilon >0$ ein $N \in \mathbb {N}$ gibt, so dass $|a_n-A|< \varepsilon$ für alle $n \geq N$. In diesem Fall nennen wir die Folge \textbf{konvergent}. Falls es keinen Grenzwert in $\mathbb {C}$ gibt, nennen wir die Folge \textbf{divergent}. 
+\end{definition}
+
+In Prädikatenlogik ist Konvergenz gegen $A$ durch
+	\[\begin{aligned}[]
+		\forall \varepsilon >0\ \exists N \in \mathbb {N}\ \forall n \geq N: |a_n - A| < \varepsilon
+	\end{aligned}\]
+gegeben. Wir bemerken noch, dass eine Folge $(a_n)_n in \mathbb {C}$ genau dann gegen $A \in \mathbb {C}$ konvergiert, wenn die Folge $(|a_n-A|)_n$ gegen Null konvergiert.
+
+\begin{lemma}{(Eindeutigkeit des Grenzwerts)}
+	Der Grenzwert einer konvergenten Folge $(a_n)_{n}$ ist eindeutig bestimmt. Wir bezeichnen ihn mit $\lim _{n \to \infty }a_n$.
+\end{lemma}
+
+\begin{proof}
+	Die Folge $(a_n)_{n}$ konvergiere gegen $A_1\in \mathbb {C}$ und $A_2\in \mathbb {C}$. Wir nehmen an, dass $A_1 \neq A_2$ und sei $\varepsilon = |A_1-A_2|> 0$. Dann können wir $N_1,N_2 \in \mathbb {N}$ finden, so dass für alle $n \geq N_1$ gilt $|a_n - A_1|< \frac {\varepsilon }{2}$ und für alle $n \geq N_2$ gilt $|a_n - A_2|< \frac {\varepsilon }{2}$. Für $N = \max \left \lbrace {N_1,N_2} \right \rbrace$ gelten also beide Aussagen und es folgt
+	\[\begin{aligned}[]
+		\varepsilon = |A_1-A_2| = |A_1-a_N+a_N-A_2| \leq |a_N-A_1|+|a_N-A_2|<\varepsilon .
+	\end{aligned}\]
+	Dies ist ein Widerspruch. Das heisst, $A_1 = A_2$ und das Lemma folgt. 
+\end{proof}
+
+\begin{lemma}{(Beschränkheit)}
+	Jede konvergente Folge ist beschränkt. 
+\end{lemma}
+
+\begin{proof}
+	Sei $(a_n)_{n}$ eine konvergente Folge und $A = \lim _{n\to \infty }a_n$. Dann existiert ein $N \in \mathbb {N}$, so dass $|a_n-A|<1$ für alle $n \geq N$. Daraus folgt
+	\[\begin{aligned}[]
+		|a_n| = |a_n - A+A| \leq |a_n-A|+|A| <1+|A|
+	\end{aligned}\]
+	für alle $n \geq N$ und
+	\[\begin{aligned}[]
+		|a_n| \leq \max \left \lbrace {|a_1|,|a_2|,\ldots ,|a_{N-1}|,1+|A|} \right \rbrace
+	\end{aligned}\]
+	für alle $n \in \mathbb {N}$.
+\end{proof}
+ 
+\end{document}

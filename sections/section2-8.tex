@@ -1,0 +1,119 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+\begin{document}
+	
+\subsection{Beschränktheit}
+
+\begin{proposition}{(Beschränktheit)}\label{satz:beschrkompintervall}
+	Seien $a, b \in \mathbb{R}$ zwei reelle Zahlen mit $a < b$ und sei $f: [a, b] \to \mathbb{C}$ eine stetige Funktion. Dann ist $f$ beschränkt. Das heisst, es existiert ein $M \in \mathbb{R}$ mit $|f(x)| \leq M$ für alle $x \in [a, b]$.
+\end{proposition}
+
+\begin{proof}
+	Wir definieren zuerst die Teilmenge
+	\[X = \{t \in [a, b] | f|_[a, t] \text{ist beschränkt}\}\]
+	Da $[a, a] = \{a\}$ gilt, liegt $a \in X$, womit $X \subseteq [a, b]$ eine nicht-leere, beschränkte Teilmenge von $\mathbb{R}$ ist. Nach dem Satz über das Supremum existiert das Supremum $s_0 = \sup(X)$ von $X$. Des Weiteren muss $s_0 \in [a, b]$ liegen, da zum einen $a \in X$ liegt und zum anderen $X$ in $[a, b]$ enthalten ist und somit $b$ eine obere Schranke ist.
+	
+	Wir verwenden die Stetigkeit von $f$ bei $s_0$ für $\varepsilon = 1$, wonach es ein $\delta > 0$ gibt, so dass für alle $x \in [a, b]$ die Implikation
+	\[|x - s_0| < \delta \implies |f(x) - f(s_0)| < 1\]
+	gilt. Wir definieren $t_0 = \max(a, s_0 - \delta)$ und $t_1 = \min(b, s_0 + \delta)$, womit 
+	\[|f(x)| \leq |f(x) - f(s_0)| + |f(s_0)| \leq 1 + |f(s_0)|\]
+	für alle $x \in (t_0, t_1)$.
+	
+	Da $s_0 - \delta$ keine obere Schranke von $X$ ist, gibt es ein $t \in X$ mit $t > s_0 - \delta$. Daher ist $f|_[a, t]$ beschränkt und es existiert ein $M_0 > 0$ mit $|f(x)| \leq M_0$ für alle $x \in [a, t]$.
+	
+	Es gilt $t \geq t_0 = \max(a, s_0 - \delta)$ und daher $[a, t] \cup (t_0, t_1) = [a, t_1)$. Auf Grund von Gleichung und der Wahl von $M_0$ gilt somit
+	\[|f(x)| \leq \max(M_0, 1 + |f(s_0)|, |f(t_1)|)\]
+	für alle $x \in [a, t_1]$. Wir schliessen, dass $t_1 \in X$ liegt und $t_1 \leq s_0$ gilt. Da aber $t_1 = \min(b, s_0 + \delta)$ per Definition, muss $t_1 = b$ sein. Also ist $f$ auf $[a, b]$ beschränkt. 
+\end{proof}
+
+\subsection{Maximum und Minimum}
+	Sei $D \subseteq \mathbb{R}$ eine Teilmenge und $f\in \mathcal {F}(D)$ eine reellwertige Funktion auf $D$. Wir sagen, dass $f$ das \textbf{Maximum in} $x_{\max }\in D$ \textbf{annimmt}, falls $f(x) \leq f(x_{\max })$ für alle $x\in D$. Analog \textbf{nimmt} $f$ ein \textbf{Minimum in} $x_{\min } \in D$ \textbf{an}, falls $f(x) \geq f(x_{\min })$ für alle $x \in D$. Wir bezeichnen $f(x_{\max })$ als das \textbf{Maximum} von $f$ (auf $D$) und $f(x_{\min })$ als das \textbf{Minimum} von $f$ (auf $D$). Wir wollen nun zeigen, dass stetige Funktion auf einem kompaktem Intervall stets ihr Minimum und ihr Maximum annehmen.
+	
+\begin{corollary}{(Annahme des Maximums and des Minimums)}
+	Seien $a, b \in \mathbb {R}$ zwei reelle Zahlen mit $a<b$ und sei $f:[a,b] \to \mathbb {R}$ eine stetige Funktion. Dann nimmt $f$ sowohl das Maximum als auch das Minimum an. 
+\end{corollary}
+
+\begin{proof}
+	Nach Satz \ref{satz:beschrkompintervall} ist $f$ beschränkt, womit das Supremum $S = \sup f([a,b])$ existiert. Wir nehmen nun indirekt an, dass $f(x)<S$ für alle $x \in [a,b]$ gilt, das heisst, dass die Funktion $f$ ihr Maximum nicht annimmt. Dadurch ist 
+	\[\begin{aligned}[]
+		F:[a,b] \to (0,\infty ),\ x \mapsto \frac {1}{S-f(x)}
+	\end{aligned}\]
+	eine wohldefinierte Funktion. Diese ist stätig. Nach Satz \ref{satz:beschrkompintervall} ist $F$ also beschränkt, womit ein $M > 0$ mit 
+	\[\begin{aligned}[]
+		\frac {1}{S-f(x)} = F(x) \leq M
+	\end{aligned}\]
+	für alle $x \in [a, b]$ exestiert. Somit gilt 
+	\[\begin{aligned}[]
+		\frac {1}{M} \leq S-f(x)
+	\end{aligned}\]
+	oder anders ausgedrückt
+	\[\begin{aligned}[]
+		f(x) \leq S- \frac {1}{M}
+	\end{aligned}\]
+	für alle $x \in[a, b]$. Letztere widerspricht aber der Definition von $S$ als Supremum von $f([a, b])$. Daher existiert ein $x_{\max } \in [a,b]$ mit $f(x_{\max }) = \sup f([a,b]) = \max f([a,b])$.
+	
+	Durch Anwendung des obigen Arguments auf $-f$ ergibt sich ebenso, dass das Minimum von $f$ angenommen wird.     
+\end{proof}
+
+
+\subsection{Gleichmässige Stetigkeit}
+
+\begin{definition}{(Gleichmässige Setigkeit)}
+	Eine reellwertige Funktion $f$ auf einer nicht-leeren Teilmenge $D \subseteq \mathbb{R}$ heisst \textbf{gleichmässig stetig}, falls es für alle $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass für alle $x, y \in D$ gilt
+	\[|x - y| < \delta \implies |f(x) - f(y)| < \varepsilon\]
+\end{definition}
+
+\begin{proposition}{(Heine, gleichmässige Stetigkeit)}
+	Sei $[a, b]$ ein kompaktes Intervall für $a < b$ und $f : [a, b] \to \mathbb{C}$ eine stetige Funktion. Dann ist $f$ gleichmässig stetig.
+\end{proposition}
+
+\begin{proof}
+	Sei $\varepsilon > 0$. Wir definieren Teilmenge
+	\[\begin{aligned}[]
+		X = \Big \lbrace t \in [a,b]\ \Big | \ \exists \delta > 0\, \forall x_1,x_2 \in [a,t]: |x_1-x_2| < \delta \implies |f(x_1)-f(x_2)|<\varepsilon \Big \rbrace
+	\end{aligned}\]
+	von $[a, b]$. In Worten ausgedrückt ist $X$ eine Menge der Endpunkte $t \in [a, b]$, für die ein uniformes $\delta > 0$ existiert für die Einschränkung $f|_{[a, t]}$. Wir möchten also zeigen, dass $b \in X$ liegt.
+	
+	Wir bemerken zuerst, dass $a \in X$ ist, da für $x_1,x_2 \in [a,a] = \left \lbrace {a} \right \rbrace$ sogar $|f(x_1)-f(x_2)| = 0$ gilt und somit jedes $\delta > 0$ gewählt werden kann. Also ist $X$ nicht-leer. Da $X$ in $[a,b]$ enthalten ist und somit beschränkt ist, existiert nach dem Satz über das Supremum das Supremum $s_0 = \sup (X)$ von $X$. Wir bemerken zuerst, dass $t \in X$ und $t' \in [a,t]$ auch $t' \in X$ impliziert (das $\delta$ zu $t$ erfüllt auch die nötige Eigenschaft für $t'$). Daher gelten die Inklusionen 
+	\[\begin{aligned}[]\label{eq:FktR-proofunifcontoncomp.1} 
+		[a,s_0) \subseteq X \subseteq [a,s_0].
+	\end{aligned}\]
+	Wir behaupten nun, dass $s_0 = b \in X$ gilt. 
+	
+	Nach Stetigkeit von $f$ bei $s_0 \in [a,b]$ existiert ein $\delta _1 >0$, so dass für alle $x\in [a,b]$ die Implikation
+	\[\begin{aligned}[]
+		|x-s_0| < \delta _1 \implies |f(x)-f(s_0)| < \frac {\varepsilon }{2}
+	\end{aligned}\]
+	gilt. Für $x_1,x_2 \in [a,b] \cap (s_0-\delta _1,s_0+\delta _1)$ gilt damit nach der Dreiecksungleichung
+	\[\begin{aligned}[]\label{eq:FktR-proofunifcontoncomp.2} 
+		|f(x_1)-f(x_2)| \leq |f(x_1)-f(s_0)| + |f(s_0)-f(x_2)| < \frac {\varepsilon }{2} + \frac {\varepsilon }{2} = \varepsilon
+	\end{aligned}\]
+	$t_0 = \max \left \lbrace {a,s_0-\frac {1}{2} \delta _1} \right \rbrace$ liegt in $X$ und daher existiert ein $\delta _0 > 0$ mit
+	\[\begin{aligned}[]\label{eq:FktR-proofunifcontoncomp.3} 
+		\forall x_1,x_2 \in [a,t_0]: |x_1-x_2| < \delta _0 \implies |f(x_1)-f(x_2)| <\varepsilon .
+	\end{aligned}\]
+	 Wir definieren $t_1 = \min \left \lbrace {b,s_0+ \frac {1}{2} \delta _1} \right \rbrace$ sowie $\delta = \min \left \lbrace {\delta _0,\frac {1}{2} \delta _1} \right \rbrace$ und behaupten, dass für diese Zahlen
+	\[\begin{aligned}[]\label{eq:FktR-proofunifcontoncomp.4} 
+		\forall x_1,x_2 \in [a,t_1]: |x_1-x_2| < \delta \implies |f(x_1)-f(x_2)| <\varepsilon
+	\end{aligned}\]
+	gilt.
+	
+	Für den Beweis dieser Behauptung nehmen wir also Punkte $x_1,x_2 \in [a,t_1]$ mit $|x_1-x_2| < \delta$. Nun unterscheiden wir zwei Fälle. 
+	\begin{itemize}
+		\item Angenommen $|x_1-s_0| \leq \frac {1}{2}\delta _1$ oder $|x_2-s_0| \leq \frac {1}{2}\delta _1$. Wir gehen ohne Beschränkung der Allgemeinheit von ersterem aus. Dann gilt nach der Dreiecksungleichung
+		\[\begin{aligned}[]
+			|x_2-s_0| \leq |x_2-x_1| + |x_1-s_0| < \delta + \tfrac {1}{2}\delta _1 \leq \tfrac {1}{2}\delta _1+\tfrac {1}{2}\delta _1 = \delta _1
+		\end{aligned}\]
+		und somit $|f(x_1)-f(x_2)| < \varepsilon$
+		
+		\item Angenommen $|x_1-s_0| > \frac {1}{2}\delta _1$ und $|x_2-s_0| > \frac {1}{2}\delta _1$. Da auch $x_j \leq t_1 \leq s_0 + \frac {1}{2} \delta _1$ für $j \in \left \lbrace {1,2} \right \rbrace$ gilt, folgt $x_j \leq s_0 - \frac {1}{2} \delta _1 \leq t_0$ für $j \in \left \lbrace {1,2} \right \rbrace$ und insbesondere $x_1,x_2 \in [a,t_0]$. Nach Gleichung \ref{eq:FktR-proofunifcontoncomp.3} gilt also auch in diesem Fall $|f(x_1)-f(x_2)| < \varepsilon$.
+	\end{itemize}
+	
+	 Dies beweist die Behauptung, womit auch $t_1 \in X$ gilt. Da aber $s_0$ das Supremum von $X$ ist und kleiner gleich $t_1 = \min \left \lbrace {b,s_0+ \frac {1}{2} \delta _1} \right \rbrace$ ist, muss $t_1 = s_0$ sein. Dies ist per Definition von $t_1$ aber nur dann möglich, wenn $s_0 = b$ ist, womit wir $b = s_0 = t_1 \in X$ gezeigt haben. Das heisst, für $\varepsilon > 0$ existiert ein $\delta > 0$, welches für alle $x_1,x_2 \in [a,b]$ die Implikation
+	\[\begin{aligned}[]
+		|x_1-x_2| < \delta \implies |f(x_1)-f(x_2)|<\varepsilon
+	\end{aligned}\]
+	erfüllt. 
+	
+	Da $\varepsilon > 0$ beliebig war, beweist dies die gleichmässige Stetigkeit von $f$. 
+\end{proof}
+\end{document}

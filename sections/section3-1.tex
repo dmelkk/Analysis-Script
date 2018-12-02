@@ -43,5 +43,150 @@ gegeben. Wir bemerken noch, dass eine Folge $(a_n)_n in \mathbb {C}$ genau dann 
 	\end{aligned}\]
 	für alle $n \in \mathbb {N}$.
 \end{proof}
+
+\begin{proposition}{(Additive und Multiplikative Eigenschaften des Grenzwertes)}\label{folg:add_and_mult}
+	Seien $(a_n)_n, (b_n)_n$ zwei konvergente Folgen.
+	\begin{enumerate}
+		\item Die Folge $(a_n)_n + (b_n)_n$ ist konvergent und es gilt
+			\[\lim_{n \to \infty}(a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n . \]
+		\item Die Folge $(a_n b_n)_n$ ist konvergent und es gilt
+			\[\lim_{n \to \infty}(a_n b_n) = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n) . \]
+			Insbesondere ist für $\alpha \in \mathbb{R}$ die Folge $\alpha (a_n)_n$ konvergent und 
+			\[\lim_{n \to \infty}(\alpha a_n) = \alpha \lim_{n \to \infty} a_n . \]
+		\item Angenommen $a_n \neq 0$ für alle $n \in \mathbb{N}$ und $\lim_{n \to \infty} a_n \neq 0$. Dann ist die Folge $(\frac{1}{a_n})_n$ konvergent und es gilt
+			\[\lim_{n \to \infty} \frac{1}{a_n} = \frac{1}{\lim_{n \to \infty} a_n}\]
+	\end{enumerate}
+	Nach (i) und (ii) bildet die Menge der konvergenten Folgen in $\mathbb{C}^\mathbb{N}$ einen Unterraum und der Grenzwert stellt eine lineare Abbildung von diesem Unterraum nach $\mathbb{C}$ dar.
+\end{proposition}
  
+\begin{proof}
+	Für (i) und (ii) angenommen wi $a_n \neq 0$ für alle $n \in \mathbb{N}$ und $A = \lim_{n \to \infty} a_n \neq 0$. Dann gilt
+	\[\begin{aligned}[]
+		\bigg |\frac {1}{a_n}- \frac {1}{A} \bigg | = \frac {|A-a_n|}{|a_nA|}
+	\end{aligned}\]
+	Wir sehen also, dass wir erzwingen können, dass $\big |\frac {1}{a_n}- \frac {1}{A} \big |$ klein ist, wenn $|A-a_n|$ klein ist. Dazu müssen wir allerdings verhindern, dass $a_n$ zu klein wird. Für den formalen Beweis sei $\varepsilon >0$. Nach Definition von $A=\lim _{n \to \infty }a_n$ existiert ein $N \in \mathbb {N}$, so dass
+	\[\begin{aligned}[]
+		|a_n-A| < \min \left \lbrace {\frac {|A|}{2},\frac {\varepsilon |A|^2}{2}} \right \rbrace
+	\end{aligned}\]
+	für alle $n \geq N$. Für $n \geq N$ gilt dann nach der umgekehrten Dreiecksungleichung
+	\[\begin{aligned}[]
+		|a_n| = |a_n -A + A| \geq |A| - |a_n-A| > |A| - \frac {|A|}{2} = \frac {|A|}{2}.
+	\end{aligned}\]
+	Also wird $a_n$ nicht zu klein und
+	\[\begin{aligned}[]
+		\bigg |\frac {1}{a_n}- \frac {1}{A} \bigg | = \frac {|A-a_n|}{|a_n||A|} < \frac {|a_n-A|}{|A|^2/2} < \frac {\varepsilon |A|^2/2}{|A|^2/2} = \varepsilon ,
+	\end{aligned}\]
+	was zu zeigen war.
+\end{proof}
+
+Eine konvergente Folge mit Grenzwert Null wird auch eine \textbf{Nullfolge} genannt.
+
+\begin{lemma}{(Indexverschiebung)}
+	Für eine konvergente Folge $(a_n)_n$ und $\ell \in \mathbb{N}_0$ ist die Folge $(a_{n + \ell})_n$ kovergent und es gilt
+	\[\lim_{n \to \infty} a_n = \lim_{n \to \infty} a_{n + \ell}\]
+\end{lemma}
+
+\subsection{Zusammenhang zur Stetigkeit}
+
+Stetigkeit lässt sich auch mit Hilfe von Folgen charakterisieren.
+
+\begin{proposition}{(Folgenstetigkeit bei einem Punkt)}
+	Sei $D \subseteq \mathbb{C}$ eine Teilmenge, $f : D \to \mathbb{C}$ eine Funktion und $z_0 \in D$. Die Funktion ist genau dann stetig bei $z_0$, wenn für jede Folge $(a_n)_n$ in $D$ mit $\lim_{n \to \infty}a_n z_0$ auch $\lim_{n \to \infty}f(a_n) = f(z_0)$ gilt.
+\end{proposition}
+
+\begin{proof}
+	Angenommen $f$ ist bei $z_0$ stetig und $(a_n)_n$ ist eine Folge in $D$ mit $\lim _{n\to \infty }a_n = z_0$. Dann existiert für $\varepsilon >0$ ein $\delta >0$ mit
+	\[\begin{aligned}[]
+		|z-z_0|<\delta \implies |f(z)-f(z_0)| < \varepsilon .
+	\end{aligned}\]
+	Des Weiteren existiert ein $N \in \mathbb {N}$ mit
+	\[\begin{aligned}[]
+		n \geq N \implies |a_n - z_0| < \delta ,
+	\end{aligned}\]
+	was gemeinsam
+	\[\begin{aligned}[]
+		n \geq N \implies |f(a_n) - f(z_0)| <\varepsilon
+	\end{aligned}\]
+	ergibt. Die Folge $(f(a_n))_n$ konvergiert also gegen $f(z_0)$.
+	
+	Für die Umkehrung nehmen wir an, dass $f$ nicht stetig ist in $z_0$. Dann existiert ein $\varepsilon >0$, so dass für alle $\delta >0$ ein $z\in D$ existiert mit
+	\[\begin{aligned}[]
+		|z-z_0| < \delta \wedge |f(z)-f(z_0)| \geq \varepsilon
+	\end{aligned}\]
+	 Wir verwenden dies für $n\in \mathbb {N}$ und $\delta = \frac {1}{n}>0$ und finden also ein $a_n \in D$ mit
+	\begin{align}\label{eq:folg-seqcontpf1} 
+		|a_n -z_0|< \frac {1}{n}
+	\end{align}
+	und
+	\begin{align}\label{eq:folg-seqcontpf2} 
+		|f(a_n)-f(z_0)| \geq \varepsilon .
+	\end{align}
+	Aus Ungleichung (\ref{eq:folg-seqcontpf1}) schliessen wir, dass die Folge $(a_n)_n$ gegen $z_0$ konvergiert und aus Ungleichung (\ref{eq:folg-seqcontpf2}) folgt, dass $(f(a_n))_n$ nicht gegen $f(z_0)$ konvergiert.
+\end{proof}
+
+\subsection{Teilfolgen}
+
+\begin{definition}{(Teilfolge)}
+	Wenn $(a_n)_n$ eine Folge ist und $(n_k)_k:k \in \mathbb {N} \to n_k \in \mathbb {N}$ eine streng monoton wachsende Folge ist, dann wird $(a_{n_k})_k$ eine \textbf{Teilfolge} von $(a_n)_n$ genannt. 
+\end{definition}
+
+\begin{lemma}{(Konvergenz von Teilfolgen)}
+	Sei $(a_n)_n$ eine konvergente Folge. Jede Teilfolge $(a_{n_k})_k$ von $(a_n)_n$ konvergiert und hat denselben Grenzwert $\lim _{k\to \infty }a_{n_k} = \lim _{n\to \infty } a_n$. 
+\end{lemma}
+
+Eine Folge kann konvergente Teilfolgen besitzen, ohne selbst zu konvergieren. Beispielsweise hat die Folge $n \in \mathbb {N} \mapsto \ (-1)^n \in \mathbb {R}$ die konvergente (konstante) Teilfolge $n \in \mathbb {N} \mapsto (-1)^{2n}\in \mathbb {R}$, konvergiert aber nicht, wie wir schon gesehen haben. 
+
+\begin{proposition}{(Häufungspunkte einer Folge)}
+	Sei $(a_n)_n$ eine Folge in $\mathbb {C}$. Eine Zahl $A \in \mathbb {C}$ heisst \textbf{Häufungspunkt} von $(a_n)_n$, falls die folgenden äquivalenten Bedingungen erfüllt sind.
+	\begin{enumerate}
+		\item Es gibt eine Teilfolge $a_{n_k}$, so dass $\lim _{k \to \infty }a_{n_k} = A$. 
+		\item Für alle $\varepsilon >0$ und $N\in \mathbb {N}$ gibt es ein $n\geq N$ mit $|a_n-A|<\varepsilon$.
+	\end{enumerate} 
+\end{proposition}
+
+\begin{proof}
+	Angenommen (a) gilt. Sei also $(a_{n_k})_k$ eine konvergente Teilfolge von $(a_n)_n$ mit Grenzwert $A$ und sei $\varepsilon > 0$. Dann existiert ein $K\in \mathbb {N}$ mit $|a_{n_k}-A|<\varepsilon$ für alle $k \geq K$. Sei nun $k \geq K$ mit $n_k \geq N$. Dann erfüllt $n = n_k$ die Bedingung $|a_{n}-A|<\varepsilon$ wie gewollt und (b) ist erfüllt.
+	
+	Angenommen (b) gilt. Wir möchten rekursiv eine Teilfolge $(a_{n_k})_k$ finden mit
+	\[\begin{aligned}[]
+		|a_{n_k}-A| < \frac {1}{k}
+	\end{aligned}\]
+	für alle $k\in \mathbb {N}$. Diese konvergiert dann gegen $A$, da für $\varepsilon >0$ die Ungleichung $|a_{n_\ell }-A| < \varepsilon$ für alle $\ell > \frac {1}{\varepsilon }$ erfüllt ist.
+	
+	Sei $\varepsilon = 1$ und $N=1$. Dann gibt es ein $n_1 \geq N=1$ mit $|a_{n_1}-A|<1$. Nun nehmen wir an, dass $n_1<n_2 < \ldots <n_k$ bereits konstruiert sind mit
+	\[\begin{aligned}[]
+		|a_{n_\ell }-A| < \frac {1}{\ell }
+	\end{aligned}\]
+	für $\ell =1, \ldots , k$. Wir setzen $\varepsilon = \frac {1}{k+1}$ und $N = n_k+1$. Dann existiert nach Voraussetzung ein $n_{k+1} \geq N > n_k$ mit
+	\[\begin{aligned}[]
+		|a_{n_{k+1}}-A| < \frac {1}{k+1}.
+	\end{aligned}\] 
+	Dies beendet den Induktionsschritt und wir erhalten durch Rekursion die gewünschte Teilfolge $(a_{n_k})_k$ mit Grenzwert $A$. 
+\end{proof}
+
+\subsection{Cauchy-Folgen}
+
+\begin{definition}{(Cauchy-Folge)}
+	Eine Folge $(a_n)_n$ in $\mathbb{C}$ ist eine Cauchy-Folge, fallse es für jedes $\varepsilon > 0$ ein $N \in \mathbb{N}$ gibt, so dass
+	\[|a_m - a_n| < \varepsilon\]
+	für alle $m, n \geq N$.
+\end{definition}
+
+\subsection{Reduktion auf reelle Folgen}
+
+Anstelle von Folgen in $\mathbb{C}$ ist es meistens ausreichend, Folgen in $\mathbb{R}$ zu betrachten.
+
+\begin{lemma}{(Reduktion})
+	Eine komplexwertige Folge $(a_n)_n$ ist genau dann konvergent (mit Grenzwert $a\in \mathbb {C}$), wenn die beiden reellwertigen Folgen $(\operatorname {Re}(a_n))_n$ und $(\operatorname {Im}(a_n))_n$ konvergent sind (mit Grenzwerten $\operatorname {Re}(a)$ respektive $\operatorname {Im}(a)$). 
+\end{lemma}
+
+\begin{proof}
+	Angenommen $(a_n)_n$ konvergiert gegen $a\in \mathbb {C}$. Für $\varepsilon >0$ existiert dann ein $N \in \mathbb {N}$, so dass $|a_n-a|< \varepsilon$ für $n\in \mathbb {N}$. Da für alle $b\in \mathbb {C}$ gilt $|\operatorname {Re}(b)| \leq |b|$ und $|\operatorname {Im}(b)| \leq |b|$, folgt
+	\[\begin{aligned}[]
+		|\operatorname {Re}(a_n)-\operatorname {Re}(a)| &= |\operatorname {Re}(a_n-a)| \leq |a_n -a| < \varepsilon \\ |\operatorname {Im}(a_n)-\operatorname {Im}(a)| &= |\operatorname {Im}(a_n-a)| \leq |a_n -a| < \varepsilon
+	\end{aligned}\]
+	für alle $n \geq N$. Dies zeigt wie gewünscht, dass die Folgen $(\operatorname {Re}(a_n))_n$ und $((\operatorname {Im}(a_n))_n$ gegen $\operatorname {Re}(a)$ respektive $\operatorname {Im}(a)$ konvergieren.
+	
+	Die Umkehrung folgt aus $a_n = \operatorname {Re}(a_n) + \operatorname {Im}(a_n)\mathrm {i}$ für alle $n\in \mathbb {N}$ und Proposition \ref{folg:add_and_mult}(i) (Additive Eigenschaft des Grenzwerts) 	
+\end{proof}
 \end{document}

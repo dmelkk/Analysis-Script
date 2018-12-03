@@ -28,7 +28,7 @@ gegeben. Wir bemerken noch, dass eine Folge $(a_n)_n in \mathbb {C}$ genau dann 
 	Dies ist ein Widerspruch. Das heisst, $A_1 = A_2$ und das Lemma folgt. 
 \end{proof}
 
-\begin{lemma}{(Beschränkheit)}
+\begin{lemma}{(Beschränkheit)}\label{lemma:beschr}
 	Jede konvergente Folge ist beschränkt. 
 \end{lemma}
 
@@ -81,7 +81,7 @@ gegeben. Wir bemerken noch, dass eine Folge $(a_n)_n in \mathbb {C}$ genau dann 
 
 Eine konvergente Folge mit Grenzwert Null wird auch eine \textbf{Nullfolge} genannt.
 
-\begin{lemma}{(Indexverschiebung)}
+\begin{lemma}{(Indexverschiebung)}\label{lemma:index_shift}
 	Für eine konvergente Folge $(a_n)_n$ und $\ell \in \mathbb{N}_0$ ist die Folge $(a_{n + \ell})_n$ kovergent und es gilt
 	\[\lim_{n \to \infty} a_n = \lim_{n \to \infty} a_{n + \ell}\]
 \end{lemma}
@@ -136,7 +136,7 @@ Stetigkeit lässt sich auch mit Hilfe von Folgen charakterisieren.
 
 Eine Folge kann konvergente Teilfolgen besitzen, ohne selbst zu konvergieren. Beispielsweise hat die Folge $n \in \mathbb {N} \mapsto \ (-1)^n \in \mathbb {R}$ die konvergente (konstante) Teilfolge $n \in \mathbb {N} \mapsto (-1)^{2n}\in \mathbb {R}$, konvergiert aber nicht, wie wir schon gesehen haben. 
 
-\begin{proposition}{(Häufungspunkte einer Folge)}
+\begin{proposition}{(Häufungspunkte einer Folge)}\label{prop:accum_points_of_lim}
 	Sei $(a_n)_n$ eine Folge in $\mathbb {C}$. Eine Zahl $A \in \mathbb {C}$ heisst \textbf{Häufungspunkt} von $(a_n)_n$, falls die folgenden äquivalenten Bedingungen erfüllt sind.
 	\begin{enumerate}
 		\item Es gibt eine Teilfolge $a_{n_k}$, so dass $\lim _{k \to \infty }a_{n_k} = A$. 

@@ -1,0 +1,149 @@
+\documentclass[../Analysis1_script.tex]{subfiles}
+
+\begin{document}
+
+\begin{proposition}{(Grenzwerte und Ungleuchung)}\label{prop:lims_and_ineqs}
+	Seien $(a_n)_n, (b_n)_n$ reelle Folgen mit Grenzwerten $a = \lim_{n \to \infty}a_n, \, b = \lim_{n \to \infty}b_n$.
+	\begin{enumerate}
+		\item Falls $a_n \leq b_n$ für alle $n \in \mathbb{N}$, dann gilt auch $a \leq b$.
+		\item Falls $a < b$, dann existiert ein $N \in \mathbb{N}$, so dass $a_n < b_n$ für alle $n \geq N$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Wir beginnen mit der zweiten Behauptung. Angenommen $a<b$, dann ist $\varepsilon = \frac {b-a}{2}>0$ und es existiert ein $N \in \mathbb {N}$ (definiert als ein Maximum), so dass
+	\[\begin{aligned}[]
+		n\geq N &\implies a-\varepsilon < a_n < a+\varepsilon \\ 
+		n\geq N &\implies b-\varepsilon < b_n < b+\varepsilon
+	\end{aligned}\]
+	Da aber $a+\varepsilon = b-\varepsilon$ nach Wahl von $\varepsilon$, ergibt sich $a_n < a+\varepsilon = b-\varepsilon <b_n$ für alle $n\geq N$.
+
+	Dies beweist auch die erste Behauptung. Denn falls $a>b$ wäre, dann gäbe es nach obigem Folgenglieder $a_n,b_n$ mit $a_n > b_n$. 
+\end{proof}
+
+\begin{lemma}{(Sandwich)}\label{lemma:sndwich}
+	Es seien $(a_n)_n,(b_n)_n,(c_n)_n$ drei reelle Folgen, so dass $a_n \leq b_n \leq c_n$ für alle $n \in \mathbb {N}$ gilt. Angenommen $(a_n)_n$ und $(c_n)_n$ sind konvergent und $A = \lim _{n\to \infty }a_n = \lim _{n\to \infty }c_n$. Dann ist auch die Folge $(b_n)_n$ konvergent und $A = \lim _{n \to \infty }b_n$. 
+\end{lemma}
+
+Lemma \ref{lemma:sendwich} ist sehr nutzlich um Konvergenz spezifischer Folgen zu zeigen.
+
+\begin{example}
+	Wir wissen bereits, dass $\lim _{n \to \infty } \frac {1}{n} = 0 = \lim _{n \to \infty } \frac {-1}{n}$. Für jedes $n \in \mathbb {N}$ gilt jedoch $\frac {-1}{n} \leq \frac {(-1)^n}{n} \leq \frac {1}{n}$ und somit haben wir auch $\lim _{n \to \infty } \frac {(-1)^n}{n} = 0$. 
+\end{example}
+
+\subsection{Monotone Folgen}
+\begin{proposition}{(Konvergenz von monotonen Folgen)}
+	Eine monotone reelle Folge $(a_n)_n$ konvergiert genau dann, wenn sie beschränkt ist. Falls die Folge $(a_n)_n$ monoton wachsend ist, gilt
+	\[\begin{aligned}[]
+		\lim _{n\to \infty }a_n = \sup \left \lbrace {a_n} \mid {n \in \mathbb {N}}\right \rbrace .
+	\end{aligned}\]
+	Falls die Folge $(a_n)_n$ monoton fallend ist, gilt
+	\[\begin{aligned}[]
+		\lim _{n\to \infty }a_n = \inf \left \lbrace {a_n} \mid {n \in \mathbb {N}}\right \rbrace .
+	\end{aligned}\]
+\end{proposition}
+
+\begin{proof}
+	Falls $(a_n)_n$ konvergent ist, ist $(a_n)_n$ beschränkt nach Lemma \ref{lemma:beschr} Sei also $(a_n)_n$ eine beschränkte, reelle Folge. Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $(a_n)_n$ monoton wachsend ist (sonst ersetzen wir einfach $(a_n)_n$ durch $(-a_n)_n$). Sei $a = \sup \left \lbrace {a_n} \mid {n \in \mathbb {N}}\right \rbrace$. Dann existiert nach der Charakterisierung des Supremums für jedes $\varepsilon >0$ ein $N \in \mathbb {N}$ mit $a_N > a- \varepsilon$. Für $n \geq N$ folgt damit aus der Monotonie von $(a_n)_n$, dass
+	\[\begin{aligned}[]
+		a-\varepsilon < a_N \leq a_n \leq a < a+\varepsilon ,
+	\end{aligned}\]
+	was zu zeigen war. 
+\end{proof} 
+
+\subsection{Limes superior und Limes inferior}
+
+\begin{definition}{(Limes superior)}
+	Für eine beschränkte reelle Folge $(a_n)_n$ ist der \textbf{Limes superior} definiert durch
+	\[\begin{aligned}[]
+		\mathchoice {\underset {{n\to \infty }}{\overline {\lim }}}{\overline {\lim }_{{n\to \infty }}\, }{\overline {\lim }_{{n\to \infty }}\, }{\overline {\lim }_{{n\to \infty }}\, } a_n = \limsup _{n \to \infty }a_n = \lim _{n\to \infty }\Bigl (\sup _{k \geq n}a_k\Bigr ) = \inf _{n \geq 1}\Bigl (\sup _{k \geq n}a_k\Bigr ).
+	\end{aligned}\] 
+\end{definition}
+
+Es ergibt sich beispielsweise für die Folge $(a_n)_n$ gegeben durch $a_n = (-1)^n$ für $n\in \mathbb {N}$ unmittelbar $S_n=1$ für alle $n \in \mathbb {N}$ und somit $\limsup _{n\to \infty }(-1)^n = 1$.
+
+\begin{definition}{(Limus inferior)}
+	Für eine beschränkte, reelle Folge $(a_n)_n$ ist der \textbf{Limes inferior} definiert durch
+	\[\begin{aligned}[]
+		\mathchoice {\underset {{n\to \infty }}{\underline{\lim }}}{\underline{\lim }_{{n\to \infty }}\, }{\underline{\lim }_{{n\to \infty }}\, }{\underline{\lim }_{{n\to \infty }}\, } a_n = \liminf _{n \to \infty } a_n = \lim _{n \to \infty } \Bigl (\inf _{k \geq n} a_k\Bigr ) = \sup _{n \geq 1}\Bigl (\inf _{k \geq n} a_k\Bigr ).
+	\end{aligned}\] 
+\end{definition}
+
+Wie zuvor erhält man beispielsweise $\liminf _{n\to \infty }(-1)^n = -1$. 
+
+\begin{proposition}{(Eigenschaften des Limes superior)}\label{prop:features_of_lim-sup}
+	Für eine reelle, beschränkte Folge $(a_n)_n$ erfüllt der Limes superior $\limsup _{n \to \infty }a_n$ die folgenden Eigenschaften:
+	\begin{itemize}
+		\item Für alle $\varepsilon >0$ gibt es nur endlich viele Folgenglieder $a_n$ mit $a_n > \limsup _{n \to \infty }a_n + \varepsilon$.
+		\item Für alle $\varepsilon >0$ gibt es unendlich viele Folgenglieder $a_n$ mit $a_n \geq \limsup _{n \to \infty }a_n - \varepsilon$.
+	\end{itemize} 
+\end{proposition}
+
+\begin{proof}
+	Zur ersten Aussage: Sei $\varepsilon >0$ und $S = \limsup _{n \to \infty }a_n$. Da $S_n= \sup _{k\geq n}a_k$ gegen $S$ konvergiert für $n \to \infty$, gibt es ein $N \in \mathbb {N}$, so dass $S_N <S+\varepsilon$. Damit ist $a_k \leq S_N<S+\varepsilon$ für alle $k \geq N$, was die erste Eigenschaft von $S = \limsup _{n \to \infty }a_n$ beweist.
+	
+	Für die zweite Aussage sei $\varepsilon >0$ und wieder $S = \limsup _{n \to \infty }a_n$. Sei $N \in \mathbb {N}$. Dann gilt $S_N \geq S = \inf _{n\geq 1}S_n$. Nach Definition von $S_N = \sup _{k \geq n}a_k$ und Satz \ref{prop:supremum} existiert ein $k \geq N mit a_k \geq S_N - \varepsilon > S-\varepsilon$. Da $N \in \mathbb {N}$ beliebig war, beweist dies die zweite Eigenschaft des Limes superior.
+\end{proof}
+
+\begin{corollary}{(Charakterrisierung der Konvergenz)}
+	Für eine reelle, beschränkte Folge $(a_n)_n gilt \liminf _{n\to \infty }a_n=\limsup _{n\to \infty }a_n$ genau dann wenn $(a_n)_n$ konvergent ist. 
+\end{corollary}
+
+\begin{proof}
+	Angenommen $A=\liminf _{n\to \infty }a_n=\limsup _{n\to \infty }a_n$ und $\varepsilon >0$. Dann existiert nach Satz \ref{prop:features_of_lim-sup} ein $N$ so dass $a_n\leq A+\varepsilon /2$ für alle $n\geq N$ (auf Grund der Eigenschaften des Limes Superior) und $a_n\geq A-\varepsilon /2$ für alle $n\geq N$ (auf Grund der Eigenschaften des Limes Inferior). Zusammen erhalten wir $|a_n-A|<\varepsilon$ für alle $n\geq N$, was zu beweisen war.
+	
+	Wir nehmen nun an, dass $A=\lim _{n\to \infty }a_n$ existiert. Sei $\varepsilon >0$. Dann existiert ein $N$ so dass $A-\varepsilon <a_n<A+\varepsilon$ für alle $n\geq N$. Aus $I_n=\inf \left \lbrace {a_k} \mid {k\geq n}\right \rbrace$ und $S_n=\sup \left \lbrace {a_k} \mid {k\geq n}\right \rbrace$ folgt nun
+	\[\begin{aligned}[]
+		A-\varepsilon \leq I_N\leq I_n\leq S_n\leq S_N\leq A+\varepsilon
+	\end{aligned}\]
+	für alle $n\geq N$, und daher
+	\[\begin{aligned}[]
+		A-\varepsilon \leq \liminf _{n\to \infty }a_n\leq \limsup _{n\to \infty }a_n \leq A+\varepsilon .
+	\end{aligned}\]
+	Da dies für alle $\varepsilon >0$ gilt, folgt daraus $A=\liminf _{n\to \infty }a_n=\limsup _{n\to \infty }a_n$. 
+\end{proof}
+
+\subsection{Konvergente Teilfolge}
+
+trachten wiederum eine beschränkte, reelle Folge $(a_n)_n$ und wollen die Konvergenz von Teilfolgen von $(a_n)_n$ untersuchen.
+
+\begin{proposition}{(Konvergenz von Teilfolgen)}
+	Für jede konvergente Teilfolge $(a_{n_k})_k$ einer beschränkten, reellen Folge $(a_n)_n$ gilt
+	\[\begin{aligned}[]
+		\lim _{k \to \infty }a_{n_k} \in [\liminf _{n \to \infty } a_n, \limsup _{n \to \infty }a_n].
+	\end{aligned}\]
+	Des Weiteren existiert eine konvergente Teilfolge $(a_{n_k})_k$ mit $\lim _{k \to \infty }a_{n_k} = \limsup _{n \to \infty }a_n$ und eine konvergente Teilfolge $(a_{m_k})_k$ mit $\lim _{k \to \infty }a_{m_k} = \liminf _{n \to \infty }a_n$. 
+\end{proposition}
+
+\begin{example}
+	Betrachtet man die Folge $(a_n)_n$ mit $a_n = (-1)^n$ für $n \in \mathbb {N}$, so erfüllt beispielsweise die Teilfolge $(a_{2k})_k$, dass $\lim _{k \to \infty }a_{2k} = \limsup _{n \to \infty } a_n = 1$, und die Teilfolge $(a_{2k+1})_k$, dass $\lim _{k \to \infty }a_{2k+1} = \liminf _{n \to \infty } a_n = -1$, wie wir schon gesehen haben.
+\end{example}
+
+\begin{proof}
+	 Sei $(a_{n_k})_k$ eine konvergente Teilfolge von $(a_n)_n, I = \liminf _{n \to \infty }a_n, S = \limsup _{n \to \infty }a_n$ und $\varepsilon >0$. Dann gibt es nach der ersten Eigenschaft in Satz \ref{prop:features_of_lim-sup} ein $N \in \mathbb {N}$, so dass
+	\begin{align}\label{eq:folg-konvvonteilfbew1} 
+		a_n \leq S + \varepsilon
+	\end{align}
+	für alle $n \geq N$. Wenn nötig können wir $N$ noch grösser wählen, so dass ebenso gilt
+	\begin{align}\label{eq:folg-konvvonteilfbew2} 
+		a_n \geq I- \varepsilon
+	\end{align}
+	für alle $n \geq N$. Insbesondere gelten \ref{eq:folg-konvvonteilfbew1} und \ref{eq:folg-konvvonteilfbew2} auch für $a_{n_k}$ und genügend grosse $k$ (zum Beispiel $k \geq N$, da dann $n_k \geq k \geq N$). Für den Limes der Folge $(a_{n_k})_k$ ergibt sich daraus
+	\[\begin{aligned}[]
+		I - \varepsilon \leq \lim _{k \to \infty } a_{n_k} \leq S + \varepsilon .
+	\end{aligned}\]
+	(siehe Proposition \ref{prop:lims_and_ineqs} und Lemma \ref{lemma:index_shift}). Da $\varepsilon >0$ beliebig war und $\lim _{k \to \infty } a_{n_k}$ nicht von $\varepsilon$ abhängt, ergibt sich daraus $I \leq \lim _{k \to \infty } a_{n_k} \leq S$, wie im Satz behauptet wurde.
+	
+	Wir wollen nun eine konvergente Teilfolge von $(a_n)_n$ mit Grenzwert $\limsup _{n\to \infty }a_n$ finden. In anderen Worten wollen wir also zeigen, dass $\limsup _{n\to \infty }a_n$ ein Häufungspunkt der Folge $(a_n)_n$ ist. Wir bedienen uns dabei der zweiten äquivalenten Bedingung in Proposition \ref{prop:accum_points_of_lim} Sei also $\varepsilon >0$ und $N\in \mathbb {N}$. Dann existiert ein $M\geq N$ mit $S\leq S_M< S+\varepsilon$, da
+	\[\begin{aligned}[]
+		S=\lim _{n\to \infty }S_n=\inf \left \lbrace {S_n} \mid {n\in \mathbb {N}}\right \rbrace .
+	\end{aligned}\]
+	Auf Grund der Definition des Supremums existiert damit ein $n\geq M\geq N$ mit
+	\[\begin{aligned}[]
+		S-\varepsilon \leq S_M-\varepsilon <a_n<S_M<S+\varepsilon .
+	\end{aligned}\]
+	Der Beweis der Existenz einer Teilfolge mit Grenzwert $\liminf _{n \to \infty }a_n$ ist analog. 
+\end{proof}
+
+\subsection{Reelle Cauchy Folgen}
+\end{document}

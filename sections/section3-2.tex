@@ -85,7 +85,7 @@ Wie zuvor erhält man beispielsweise $\liminf _{n\to \infty }(-1)^n = -1$.
 	Für die zweite Aussage sei $\varepsilon >0$ und wieder $S = \limsup _{n \to \infty }a_n$. Sei $N \in \mathbb {N}$. Dann gilt $S_N \geq S = \inf _{n\geq 1}S_n$. Nach Definition von $S_N = \sup _{k \geq n}a_k$ und Satz \ref{prop:supremum} existiert ein $k \geq N mit a_k \geq S_N - \varepsilon > S-\varepsilon$. Da $N \in \mathbb {N}$ beliebig war, beweist dies die zweite Eigenschaft des Limes superior.
 \end{proof}
 
-\begin{corollary}{(Charakterrisierung der Konvergenz)}
+\begin{corollary}{(Charakterrisierung der Konvergenz)}\label{cor:charkonvergenz}
 	Für eine reelle, beschränkte Folge $(a_n)_n gilt \liminf _{n\to \infty }a_n=\limsup _{n\to \infty }a_n$ genau dann wenn $(a_n)_n$ konvergent ist. 
 \end{corollary}
 
@@ -146,4 +146,29 @@ trachten wiederum eine beschränkte, reelle Folge $(a_n)_n$ und wollen die Konve
 \end{proof}
 
 \subsection{Reelle Cauchy Folgen}
+
+\begin{proposition}{(Cauchy-Kriterium für Folgen)}
+	Eine reelle Folge genau dann konvergent, wenn sie eine Cauchy-Folge ist. 
+\end{proposition}
+
+\begin{proof}
+	Angenommen $(a_n)_n$ ist eine reelle Folge mit $a_n \to A \in \mathbb{R}$ für $n \to \infty$. Sei $\varepsilon > 0$. Dann existiert ein $N \in \mathbb{N}$, so dass für alle $n \geq N$ gilt $|a_n - A| < \frac{\varepsilon}{2}$. Für $m, n \geq N$ gilt somit auch 
+	\[|a_m - a_n| \leq |a_m - A| + |A - a_n| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\]
+	Dies beweist, dass $(a_n)_n$ eine Cauchy-Folge ist.
+	
+	Sei nun umgekehrt $(a_n)_n$ eine Cauchy-Folge. Für $\varepsilon = 1$ existiert dann ein $N \in \mathbb{N}$, so dass $|a_m - a_n| < 1$ für $m, n \geq N$. Insbesonders gilt also 
+	\[|a_n| \leq |a_n - a_N| + |a_N| < 1 + |a_N|\]
+	für alle $n \geq N$. Daher ist $(a_n)_n$ eine beschränkte Folge. Des Weiteren existiert nach Annahme für jedes $\varepsilon > 0$ ein $N \in \mathbb{N}$, so dass $|a_m - a_n| < \varepsilon$ für alle $m, n \geq N$. Wir setzen $m = N$ und erhalten
+	\[a_m - \varepsilon < a_n < a_m + \varepsilon\]
+	Wir betrachten nun Limes Inferior und Limes Superior der Folge und erhalten
+	\[a_m - \varepsilon \leq \liminf_{n\to \infty} a_n \leq \limsup_{n \to \infty} a_n \leq a_m + \varepsilon\]
+	Insbesondere gilt $|\liminf _{n\to \infty }a_n-\limsup _{n\to \infty }a_n|\leq 2\varepsilon$. Da aber $\varepsilon > 0$ beliebig war, erhalten wir Gleichheit von Limes Superior und Limes Inferior und daher Konvergenz der Folge nach Korolla \ref{cor:charkonvergenz}.
+\end{proof}
+
+
+\subsection{Uneigentliche Grenzwerte}
+
+\begin{definition}
+	Eine reelle Folge $(a_n)_n$ \textbf{divergiert gegen $\infty$}, wenn für jedes $\varepsilon > 0$ ein $N \in \mathbb{N}$ existiert, so dass $a_n \geq \varepsilon^{-1}$ gilt für alle $n \geq N$. In diesem Fall schreiben wir $\lim_{n\to \infty} a_n = \infty$. Genauso sagen wir, dass $(a_n)_n$ \textbf{gegen $-\infty$ divergiert}, falls für jedes $\varepsilon > 0$ ein $N \in \mathbb{N}$ existiert, so dass $a_n \leq -\varepsilon^{-1}$ für alle $n \geq N$. In letzterem Fall schreiben wir $\lim_{n \to \infty} a_n = -\infty$. In beiden Fällen spricht man auch von \textbf{uneigentlicher Konvergenz} und \textbf{uneigentlichen Grenzwerten}. 
+\end{definition}
 \end{document}
